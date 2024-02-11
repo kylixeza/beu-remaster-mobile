@@ -1,5 +1,5 @@
 object App {
-    const val compileSdk = 30
+    const val compileSdk = 34
     const val minSdk = 21
     const val targetSdk = 30
     const val versionCode = 1
@@ -55,6 +55,7 @@ object Libraries {
         const val retrofitGson = "com.squareup.retrofit2:converter-gson:2.9.0"
         const val okhttp = "com.squareup.okhttp3:okhttp:5.0.0-alpha.3"
         const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"
+        const val networkResponseAdapter = "com.github.haroldadmin:NetworkResponseAdapter:5.0.0"
     }
 
     object CameraX {
@@ -95,6 +96,11 @@ object Libraries {
         const val junit = "junit:junit:4.13.2"
         const val junitExt = "androidx.test.ext:junit:1.1.5"
         const val espressoCore = "androidx.test.espresso:espresso-core:3.5.1"
+    }
+
+    object Arrow {
+        const val arrowBOM = "io.arrow-kt:arrow-stack:1.2.0"
+        const val arrowCore = "io.arrow-kt:arrow-core"
     }
 
 }
