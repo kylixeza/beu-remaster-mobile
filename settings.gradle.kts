@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "Beu Skripsi"
 include(":app")
 include(":common")
+include(":core")
