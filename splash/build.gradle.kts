@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.kylix.common"
-    compileSdk = App.compileSdk
+    namespace = "com.kylix.splash"
+    compileSdk = 34
 
     defaultConfig {
-        minSdk = App.minSdk
+        minSdk = 21
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -37,22 +37,17 @@ android {
 }
 
 dependencies {
-    implementation(Libraries.AndroidX.appCompat)
+
     implementation(Libraries.AndroidX.coreKtx)
+    implementation(Libraries.AndroidX.appCompat)
     implementation(Libraries.AndroidX.material)
-    implementation(Libraries.AndroidX.recyclerView)
+    implementation(Libraries.AndroidX.lifecycleViewModelKtx)
 
     implementation(Libraries.Coroutine.coroutinesCore)
-    implementation(Libraries.Coroutine.coroutinesAndroid)
-
-    implementation(Libraries.Retrofit.networkResponseAdapter)
-    implementation(Libraries.Retrofit.retrofitGson)
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
-    implementation(platform(Libraries.Arrow.arrowBOM))
-    implementation(Libraries.Arrow.arrowCore)
-
-    implementation(Libraries.CustomUI.snackify)
+    api(project(Modules.core))
+    api(project(Modules.common))
 }

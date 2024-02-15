@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import com.kylix.core.data.local.preference.DataStoreUtil.DATA_STORE_NAME
-import com.kylix.core.data.local.preference.DataStoreUtil.IS_FIRST_OPEN_PREF_KEY
+import com.kylix.core.data.local.preference.DataStoreUtil.IS_PASS_ONBOARD
 import com.kylix.core.data.local.preference.DataStoreUtil.TOKEN_PREF_KEY
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -34,12 +34,12 @@ class BeuDataStore(
         }
     }
 
-    suspend fun saveIsFirstTime(isFirstTime: Boolean) {
+    suspend fun savePassOnBoard(isPassOnBoard: Boolean) {
         context.userPreferenceDataStore.edit {
-            it[IS_FIRST_OPEN_PREF_KEY] = isFirstTime
+            it[IS_PASS_ONBOARD] = isPassOnBoard
         }
     }
 
-    suspend fun getIsFirstTime(): Boolean = context.userPreferenceDataStore.data
-        .map { it[IS_FIRST_OPEN_PREF_KEY] ?: false }.first()
+    suspend fun getIsPassOnBoard(): Boolean = context.userPreferenceDataStore.data
+        .map { it[IS_PASS_ONBOARD] ?: false }.first()
 }

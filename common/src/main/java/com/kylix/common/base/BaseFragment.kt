@@ -8,9 +8,14 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.ScreenOrientation
+import com.kylix.common.widget.buildLoadingDialog
+import com.kylix.common.widget.errorSnackbar
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 
@@ -19,6 +24,12 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
 
     lateinit var fragmentView: View
     lateinit var parent: AppCompatActivity
+
+    private val loadingDialog by lazy {
+        requireContext().buildLoadingDialog()
+    }
+
+    abstract val viewModel: BaseViewModel
 
     abstract fun inflateViewBinding(container: ViewGroup?): VB
     abstract fun VB.bind()
@@ -29,6 +40,7 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
     open fun determineScreenOrientation(): ScreenOrientation { return ScreenOrientation.PORTRAIT }
     open fun onDestroyBehaviour() { }
     open fun onBackPressedBehaviour() { }
+    open fun onDataSuccessLoaded() {}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,6 +76,15 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 onBackPressedBehaviour()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.uiState.collect { uiState ->
+                if (uiState == null) return@collect
+                if (uiState.isLoading) loadingDialog.show() else loadingDialog.dismiss()
+                if (uiState.isError) binding?.root?.errorSnackbar(uiState.errorMessage)
+                if (uiState.isSuccess) onDataSuccessLoaded()
             }
         }
 

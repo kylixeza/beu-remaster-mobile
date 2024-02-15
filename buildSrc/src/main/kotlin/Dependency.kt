@@ -7,12 +7,20 @@ object App {
     const val applicationId = "com.kylix.beuskripsi"
 }
 
+object Modules {
+    const val app = ":app"
+    const val common = ":common"
+    const val core = ":core"
+    const val splash = ":splash"
+}
+
 object Libraries {
 
     object AndroidX {
         const val coreKtx = "androidx.core:core-ktx:1.12.0"
         const val appCompat = "androidx.appcompat:appcompat:1.6.1"
         const val material = "com.google.android.material:material:1.11.0"
+
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
         const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
         const val recyclerView = "androidx.recyclerview:recyclerview:1.3.2"
@@ -84,7 +92,7 @@ object Libraries {
     object CustomUI {
         const val dotsIndicator = "com.tbuonomo:dotsindicator:5.0"
         const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
-        const val light = "io.github.tonnyl:light:1.0.0"
+        const val snackify = "com.github.Musfick:Snackify:0.1.2"
     }
 
     object Glide {

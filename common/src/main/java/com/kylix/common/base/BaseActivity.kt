@@ -3,14 +3,25 @@ package com.kylix.common.base
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.ScreenOrientation
+import com.kylix.common.widget.buildLoadingDialog
+import com.kylix.common.widget.errorSnackbar
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
 
     private lateinit var _binding: VB
     val binding get() = _binding
+
+    private val loadingDialog by lazy {
+        this.buildLoadingDialog()
+    }
+
+    abstract val viewModel: BaseViewModel
 
     abstract fun inflateViewBinding(): VB
     abstract fun VB.bind()
@@ -18,6 +29,7 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
     open fun constraintValidator(): ConstraintValidator<VB>? { return null }
     open fun determineScreenOrientation(): ScreenOrientation? { return ScreenOrientation.PORTRAIT }
     open fun onBackPressedBehaviour() { finish() }
+    open fun onDataSuccessLoaded() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +59,15 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 onBackPressedBehaviour()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.uiState.collect { uiState ->
+                if (uiState == null) return@collect
+                if (uiState.isLoading) loadingDialog.show() else loadingDialog.dismiss()
+                if (uiState.isError) binding.root.errorSnackbar(uiState.errorMessage)
+                if (uiState.isSuccess) onDataSuccessLoaded()
             }
         }
 

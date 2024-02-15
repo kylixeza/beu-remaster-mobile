@@ -6,6 +6,8 @@ import com.kylix.core.data.api.ApiService
 import com.kylix.core.data.api.TokenInterceptor
 import com.kylix.core.data.local.db.BeuDatabase
 import com.kylix.core.data.local.preference.BeuDataStore
+import com.kylix.core.repositories.AuthRepository
+import com.kylix.core.repositories.AuthRepositoryImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -68,4 +70,8 @@ val networkModule = module {
     }
 }
 
-val coreModule = listOf(databaseModule, datastoreModule, networkModule)
+val repositoryModule = module {
+    single<AuthRepository> { AuthRepositoryImpl(get()) }
+}
+
+val coreModule = listOf(databaseModule, datastoreModule, networkModule, repositoryModule)
