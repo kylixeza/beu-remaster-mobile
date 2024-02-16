@@ -1,6 +1,11 @@
 package com.kylix.beuskripsi
 
 import android.app.Application
+import com.kylix.core.di.databaseModule
+import com.kylix.core.di.datastoreModule
+import com.kylix.core.di.networkModule
+import com.kylix.core.di.repositoryModule
+import com.kylix.router.di.routerModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -13,7 +18,13 @@ class Beu: Application() {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@Beu)
-            modules()
+            modules(
+                databaseModule,
+                datastoreModule,
+                networkModule,
+                repositoryModule,
+                routerModule,
+            )
         }
     }
 }

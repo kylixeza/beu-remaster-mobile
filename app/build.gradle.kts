@@ -41,4 +41,7 @@ dependencies {
     implementation(Libraries.AndroidX.appCompat)
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
+
+    api(project(Modules.router))
+    api(project(Modules.common))
 }
