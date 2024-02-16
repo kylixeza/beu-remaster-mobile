@@ -73,5 +73,3 @@ val networkModule = module {
 val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl(get()) }
 }
-
-val coreModule = listOf(databaseModule, datastoreModule, networkModule, repositoryModule)

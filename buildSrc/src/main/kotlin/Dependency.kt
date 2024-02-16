@@ -12,6 +12,8 @@ object Modules {
     const val common = ":common"
     const val core = ":core"
     const val splash = ":splash"
+    const val onboard = ":onboard"
+    const val router = ":router"
 }
 
 object Libraries {
