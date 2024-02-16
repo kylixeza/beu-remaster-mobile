@@ -9,6 +9,9 @@ import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.ScreenOrientation
 import com.kylix.common.widget.buildLoadingDialog
 import com.kylix.common.widget.errorSnackbar
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -72,6 +75,12 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         }
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    fun <T> StateFlow<T>.observe(block: (T) -> Unit) {
+        lifecycleScope.launch {
+            collect { block(it) }
+        }
     }
     
 }

@@ -23,9 +23,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         lifecycleScope.launch {
             viewModel.destination.collect {
                 when(it) {
-                    SplashDestination.ONBOARD -> navigation.onStartOnboard()
-                    SplashDestination.LOGIN -> navigation.onStartLogin()
-                    SplashDestination.HOME -> navigation.onStartHome()
+                    SplashDestination.ONBOARD -> navigation.navigateToOnBoard()
+                    SplashDestination.LOGIN -> navigation.navigateToAuth()
+                    SplashDestination.HOME -> navigation.navigateToHome()
                     null -> doNothing()
                 }
             }
