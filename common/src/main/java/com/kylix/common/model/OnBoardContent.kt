@@ -4,5 +4,5 @@ data class OnBoardContent(
     val page: Int,
     val title: String,
     val description: String,
-    val image: String,
+    val lottie: String,
 )

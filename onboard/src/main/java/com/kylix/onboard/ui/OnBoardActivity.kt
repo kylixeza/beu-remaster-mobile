@@ -29,9 +29,9 @@ class OnBoardActivity : BaseActivity<ActivityOnBoardBinding>() {
         supportActionBar?.hide()
 
         val fragments = listOf(
-            OnBoardPageFragment(),
-            OnBoardPageFragment(),
-            OnBoardPageFragment(),
+            OnBoardPageFragment.newInstance(),
+            OnBoardPageFragment.newInstance(),
+            OnBoardPageFragment.newInstance()
         )
 
 

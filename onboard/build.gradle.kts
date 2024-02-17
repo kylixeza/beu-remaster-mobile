@@ -53,6 +53,7 @@ dependencies {
     implementation(Libraries.CustomUI.dotsIndicator)
 
     implementation(Libraries.Lottie.lottie)
+    implementation(Libraries.Lottie.dotLottie)
 
     api(project(Modules.core))
     api(project(Modules.common))

@@ -89,6 +89,7 @@ object Libraries {
 
     object Lottie {
         const val lottie = "com.airbnb.android:lottie:6.1.0"
+        const val dotLottie = "com.github.dotlottie:dotlottieloader-android:1.1"
     }
 
     object CustomUI {

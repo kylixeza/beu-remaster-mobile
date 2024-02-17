@@ -23,13 +23,13 @@ class OnBoardViewModel: BaseViewModel() {
 
     fun nextPage() {
         _page.value = _page.value.plus(1)
-        getOnBoardContent(_page.value ?: 0)
+        getOnBoardContent(_page.value)
         checkPagePosition()
     }
 
     fun setPage(page: Int) {
         _page.value = page
-        getOnBoardContent(_page.value ?: 0)
+        getOnBoardContent(_page.value)
         checkPagePosition()
     }
 
@@ -50,19 +50,19 @@ class OnBoardViewModel: BaseViewModel() {
                 1,
                 "Panduan Memasak",
                 "Temukan tutorial memasak yang sesuai dengan kategori diinginkan",
-                "onboard1.json"
+                "onboard1.lottie"
             ),
             OnBoardContent(
                 2,
                 "Diskusi Pengguna",
                 "Kamu dapat berbagi pengalaman memasakmu dengan pengguna lainnya ",
-                "onboard2.json"
+                "onboard2.lottie"
             ),
             OnBoardContent(
                 3,
                 "Pengenalan Gambar",
                 "Kamu dapat mencari resep masakan dengan mengarahkan kamera ke suatu makanan",
-                "onboard3.json"
+                "onboard3.lottie"
             ),
         ).first { it.page == page }
 
