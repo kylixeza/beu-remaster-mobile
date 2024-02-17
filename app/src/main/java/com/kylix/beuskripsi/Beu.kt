@@ -5,7 +5,9 @@ import com.kylix.core.di.databaseModule
 import com.kylix.core.di.datastoreModule
 import com.kylix.core.di.networkModule
 import com.kylix.core.di.repositoryModule
+import com.kylix.onboard.di.onBoardModule
 import com.kylix.router.di.routerModule
+import com.kylix.splash.di.splashModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -24,6 +26,8 @@ class Beu: Application() {
                 networkModule,
                 repositoryModule,
                 routerModule,
+                splashModule,
+                onBoardModule
             )
         }
     }
