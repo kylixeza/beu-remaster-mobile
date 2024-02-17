@@ -20,7 +20,7 @@ class SplashViewModel(
             val isPassOnBoard = async { authRepository.isPassOnBoard() }.await()
             val isLoggedIn = async { authRepository.isLoggedIn() }.await()
 
-            if (isPassOnBoard) _destination.value = SplashDestination.ONBOARD
+            if (!isPassOnBoard) _destination.value = SplashDestination.ONBOARD
             else if (isLoggedIn) _destination.value = SplashDestination.HOME
             else _destination.value = SplashDestination.LOGIN
         }
