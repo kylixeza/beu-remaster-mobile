@@ -12,5 +12,5 @@ abstract class OnBoardNavigation {
         activity.finish()
     }
 
-    abstract fun navigateToAuth()
+    abstract fun navigateToAuth(activity: Activity)
 }

@@ -42,13 +42,13 @@ class OnBoardActivity : BaseActivity<ActivityOnBoardBinding>() {
 
         btnNext.setOnClickListener {
             if (viewModel.isLastPage.value)
-                navigation.navigateToAuth()
+                navigation.navigateToAuth(this@OnBoardActivity)
             else
                 viewModel.nextPage()
         }
 
         btnSkip.setOnClickListener {
-            navigation.navigateToAuth()
+            navigation.navigateToAuth(this@OnBoardActivity)
         }
 
 

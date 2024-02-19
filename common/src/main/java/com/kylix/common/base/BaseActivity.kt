@@ -24,7 +24,7 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         this.buildLoadingDialog()
     }
 
-    abstract val viewModel: BaseViewModel
+    open val viewModel: BaseViewModel? = null
 
     abstract fun inflateViewBinding(): VB
     abstract fun VB.bind()
@@ -44,6 +44,15 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         super.onResume()
 
         val screenOrientation = determineScreenOrientation()
+
+        binding.root.apply {
+            setPadding(
+                paddingLeft,
+                42,
+                paddingRight,
+                paddingBottom
+            )
+        }
 
         requestedOrientation = if(screenOrientation != null) {
             if (screenOrientation == ScreenOrientation.PORTRAIT)
@@ -66,7 +75,7 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            viewModel.uiState.collect { uiState ->
+            viewModel?.uiState?.collect { uiState ->
                 if (uiState == null) return@collect
                 if (uiState.isLoading) loadingDialog.show() else loadingDialog.dismiss()
                 if (uiState.isError) binding.root.errorSnackbar(uiState.errorMessage)

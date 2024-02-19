@@ -13,6 +13,7 @@ object Modules {
     const val core = ":core"
     const val splash = ":splash"
     const val onboard = ":onboard"
+    const val auth = ":auth"
     const val router = ":router"
 }
 

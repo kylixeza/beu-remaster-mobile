@@ -1,12 +1,10 @@
-import org.jetbrains.kotlin.ir.backend.js.compile
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.kylix.router"
+    namespace = "com.kylix.auth"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -32,6 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -39,11 +41,11 @@ dependencies {
     implementation(Libraries.AndroidX.coreKtx)
     implementation(Libraries.AndroidX.appCompat)
     implementation(Libraries.AndroidX.material)
+    implementation(Libraries.AndroidX.fragmentKtx)
 
-    api(Libraries.Koin.koinCore)
+    implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
-    api(project(Modules.splash))
-    api(project(Modules.onboard))
-    api(project(Modules.auth))
+    api(project(Modules.common))
+    api(project(Modules.core))
 }

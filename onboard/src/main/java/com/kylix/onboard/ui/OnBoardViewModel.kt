@@ -36,7 +36,7 @@ class OnBoardViewModel: BaseViewModel() {
     private fun checkPagePosition() {
         when (_page.value) {
             1 -> _isFirstPage.value = true
-            4 -> _isLastPage.value = true
+            3 -> _isLastPage.value = true
             else -> {
                 _isFirstPage.value = false
                 _isLastPage.value = false
@@ -64,7 +64,7 @@ class OnBoardViewModel: BaseViewModel() {
                 "Kamu dapat mencari resep masakan dengan mengarahkan kamera ke suatu makanan",
                 "onboard3.lottie"
             ),
-        ).first { it.page == page }
+        ).filter { it.page == page }.firstOrNull()
 
         _onBoardContent.value = (contents)
     }
