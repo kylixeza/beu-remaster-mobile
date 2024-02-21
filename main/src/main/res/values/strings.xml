@@ -1,0 +1,5 @@
+<resources>
+    <string name="home">Beranda</string>
+    <string name="camera">Kamera</string>
+    <string name="profile">Profile</string>
+</resources>

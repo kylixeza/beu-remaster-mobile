@@ -9,6 +9,6 @@ class OnBoardNavigator(
 ): OnBoardNavigation() {
 
     override fun navigateToAuth(activity: Activity) {
-        authNavigation.apply { activity.navigateItSelf() }
+        authNavigation.navigateItSelf(activity)
     }
 }

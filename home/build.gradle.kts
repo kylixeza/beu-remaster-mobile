@@ -1,12 +1,10 @@
-import org.jetbrains.kotlin.ir.backend.js.compile
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.kylix.router"
+    namespace = "com.kylix.home"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -37,14 +35,8 @@ android {
 dependencies {
 
     implementation(Libraries.AndroidX.coreKtx)
-    implementation(Libraries.AndroidX.appCompat)
-    implementation(Libraries.AndroidX.material)
-
-    api(Libraries.Koin.koinCore)
-    implementation(Libraries.Koin.koinAndroid)
-
-    api(project(Modules.splash))
-    api(project(Modules.onboard))
-    api(project(Modules.auth))
-    api(project(Modules.main))
+    implementation(Libraries.AndroidX.fragmentKtx)
+    implementation(Libraries.AndroidX.lifecycleViewModelKtx)
+    implementation(Libraries.AndroidX.navigationFragment)
+    implementation(Libraries.AndroidX.navigationUI)
 }

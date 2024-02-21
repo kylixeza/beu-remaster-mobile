@@ -6,11 +6,11 @@ import com.kylix.auth.ui.AuthActivity
 
 abstract class AuthNavigation {
 
-    fun Activity.navigateItSelf() {
-        val intent = Intent(this, AuthActivity::class.java)
-        startActivity(intent)
-        finish()
+    fun navigateItSelf(activity: Activity) {
+        val intent = Intent(activity, AuthActivity::class.java)
+        activity.startActivity(intent)
+        activity.finish()
     }
 
-    abstract fun Activity.navigateToHome()
+    abstract fun navigateToHome(activity: Activity)
 }

@@ -15,6 +15,10 @@ object Modules {
     const val onboard = ":onboard"
     const val auth = ":auth"
     const val router = ":router"
+    const val main = ":main"
+    const val home = ":home"
+    const val camera = ":camera"
+    const val profile = ":profile"
 }
 
 object Libraries {
@@ -30,6 +34,9 @@ object Libraries {
 
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.6.2"
         const val lifecycleViewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
+
+        const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:2.7.7"
+        const val navigationUI = "androidx.navigation:navigation-ui-ktx:2.7.7"
     }
 
     object Datastore {
