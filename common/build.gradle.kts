@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,6 +42,9 @@ dependencies {
     implementation(Libraries.AndroidX.coreKtx)
     implementation(Libraries.AndroidX.material)
     implementation(Libraries.AndroidX.recyclerView)
+
+    implementation(Libraries.Glide.glide)
+    kapt(Libraries.Glide.compiler)
 
     implementation(Libraries.Coroutine.coroutinesCore)
     implementation(Libraries.Coroutine.coroutinesAndroid)

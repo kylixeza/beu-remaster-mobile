@@ -30,13 +30,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     implementation(Libraries.AndroidX.coreKtx)
     implementation(Libraries.AndroidX.fragmentKtx)
+    implementation(Libraries.AndroidX.constraintLayout)
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
     implementation(Libraries.AndroidX.navigationFragment)
     implementation(Libraries.AndroidX.navigationUI)
+
+    api(project(Modules.common))
 }

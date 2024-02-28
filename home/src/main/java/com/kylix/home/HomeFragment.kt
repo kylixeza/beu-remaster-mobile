@@ -1,31 +1,38 @@
 package com.kylix.home
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import com.kylix.common.R
+import com.kylix.common.base.BaseFragment
+import com.kylix.common.util.initLinearHorizontal
+import com.kylix.common.util.initLinearVertical
+import com.kylix.home.adapter.CategoryAdapter
+import com.kylix.home.adapter.HomeAdapter
+import com.kylix.home.adapter.RecipeAdapter
+import com.kylix.home.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    companion object {
-        fun newInstance() = HomeFragment()
+    private val categoryAdapter by lazy { CategoryAdapter() }
+
+    private val recipeAdapter by lazy { RecipeAdapter(
+        onRecipeSelected = { recipe ->
+
+        }
+    ) }
+
+    private val homeAdapter by lazy { HomeAdapter(recipeAdapter) }
+
+    override fun inflateViewBinding(container: ViewGroup?): FragmentHomeBinding {
+        return FragmentHomeBinding.inflate(layoutInflater, container, false)
     }
 
-    private lateinit var viewModel: HomeViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    override fun FragmentHomeBinding.bind() {
+        rvCategory.initLinearHorizontal(requireContext(), categoryAdapter)
+        rvHome.initLinearVertical(requireContext(), homeAdapter)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun systemBarColor(): Int {
+        return R.color.primary_700
     }
 
 }

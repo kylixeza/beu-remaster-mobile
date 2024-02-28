@@ -45,15 +45,6 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
 
         val screenOrientation = determineScreenOrientation()
 
-        binding.root.apply {
-            setPadding(
-                paddingLeft,
-                42,
-                paddingRight,
-                paddingBottom
-            )
-        }
-
         requestedOrientation = if(screenOrientation != null) {
             if (screenOrientation == ScreenOrientation.PORTRAIT)
                 android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

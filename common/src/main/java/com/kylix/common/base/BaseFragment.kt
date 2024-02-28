@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.kylix.common.R
 import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.ScreenOrientation
 import com.kylix.common.widget.buildLoadingDialog
@@ -29,7 +31,7 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
         requireContext().buildLoadingDialog()
     }
 
-    abstract val viewModel: BaseViewModel
+    open val viewModel: BaseViewModel? = null
 
     abstract fun inflateViewBinding(container: ViewGroup?): VB
     abstract fun VB.bind()
@@ -41,6 +43,7 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
     open fun onDestroyBehaviour() { }
     open fun onBackPressedBehaviour() { }
     open fun onDataSuccessLoaded() {}
+    open fun systemBarColor(): Int { return R.color.white }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,6 +70,8 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
             activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
 
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), systemBarColor())
+
         binding?.apply {
             bind()
             constraintValidator()?.apply { validate() }
@@ -80,7 +85,7 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
         }
 
         lifecycleScope.launch {
-            viewModel.uiState.collect { uiState ->
+            viewModel?.uiState?.collect { uiState ->
                 if (uiState == null) return@collect
                 if (uiState.isLoading) loadingDialog.show() else loadingDialog.dismiss()
                 if (uiState.isError) binding?.root?.errorSnackbar(uiState.errorMessage)
