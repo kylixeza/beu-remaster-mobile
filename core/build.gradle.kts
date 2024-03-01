@@ -17,7 +17,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"\"")
+            buildConfigField("String", "BASE_URL", "\"https://beu-api-test.up.railway.app\"")
         }
         release {
             buildConfigField("String", "BASE_URL", "\"\"")
@@ -48,6 +48,7 @@ dependencies {
     implementation(Libraries.Retrofit.retrofitGson)
     implementation(Libraries.Retrofit.okhttp)
     implementation(Libraries.Retrofit.okhttpLogging)
+    implementation(Libraries.Retrofit.networkResponseAdapter)
 
     implementation(Libraries.Room.roomRuntime)
     implementation(Libraries.Room.roomKtx)
@@ -60,4 +61,9 @@ dependencies {
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
+
+    implementation(platform(Libraries.Arrow.arrowBOM))
+    implementation(Libraries.Arrow.arrowCore)
+
+    implementation(project(Modules.common))
 }

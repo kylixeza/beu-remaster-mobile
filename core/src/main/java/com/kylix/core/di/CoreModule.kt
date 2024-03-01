@@ -1,8 +1,9 @@
 package com.kylix.core.di
 
 import androidx.room.Room
+import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.kylix.core.BuildConfig
-import com.kylix.core.data.api.ApiService
+import com.kylix.core.data.api.AuthApiService
 import com.kylix.core.data.api.TokenInterceptor
 import com.kylix.core.data.local.db.BeuDatabase
 import com.kylix.core.data.local.preference.BeuDataStore
@@ -61,15 +62,19 @@ val networkModule = module {
             .build()
     }
     single {
-        val retrofit = Retrofit.Builder()
+        Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()
-        retrofit.create(ApiService::class.java)
+    }
+
+    single {
+        get<Retrofit>().create(AuthApiService::class.java)
     }
 }
 
 val repositoryModule = module {
-    single<AuthRepository> { AuthRepositoryImpl(get()) }
+    single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
 }

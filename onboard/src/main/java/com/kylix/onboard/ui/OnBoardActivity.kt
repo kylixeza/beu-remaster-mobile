@@ -41,8 +41,10 @@ class OnBoardActivity : BaseActivity<ActivityOnBoardBinding>() {
         pageIndicatorView.attachTo(viewPager)
 
         btnNext.setOnClickListener {
-            if (viewModel.isLastPage.value)
+            if (viewModel.isLastPage.value) {
+                viewModel.passOnBoard()
                 navigation.navigateToAuth(this@OnBoardActivity)
+            }
             else
                 viewModel.nextPage()
         }

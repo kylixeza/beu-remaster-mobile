@@ -29,8 +29,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
 
         btnLogin.setOnClickListener {
-            navigation.navigateToHome(requireActivity())
+            val email = edtEmail.text.toString()
+            val password = edtPassword.text.toString()
+
+            viewModel.login(email, password)
         }
+    }
+
+    override fun onDataSuccessLoaded() {
+        navigation.navigateToHome(requireActivity())
     }
 
     companion object {

@@ -46,6 +46,9 @@ dependencies {
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
+    implementation(platform(Libraries.Arrow.arrowBOM))
+    implementation(Libraries.Arrow.arrowCore)
+
     api(project(Modules.common))
     api(project(Modules.core))
 }

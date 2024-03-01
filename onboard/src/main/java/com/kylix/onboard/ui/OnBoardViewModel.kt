@@ -2,10 +2,14 @@ package com.kylix.onboard.ui
 
 import com.kylix.common.base.BaseViewModel
 import com.kylix.common.model.OnBoardContent
+import com.kylix.core.repositories.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.runBlocking
 
-class OnBoardViewModel: BaseViewModel() {
+class OnBoardViewModel(
+    private val authRepository: AuthRepository
+): BaseViewModel() {
     private val _page = MutableStateFlow(1)
     val page = _page.asStateFlow()
 
@@ -67,5 +71,11 @@ class OnBoardViewModel: BaseViewModel() {
         ).filter { it.page == page }.firstOrNull()
 
         _onBoardContent.value = (contents)
+    }
+
+    fun passOnBoard() {
+        runBlocking {
+            authRepository.passOnBoard()
+        }
     }
 }
