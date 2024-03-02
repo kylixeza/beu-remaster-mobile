@@ -20,13 +20,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val categoryAdapter by lazy { CategoryAdapter() }
 
-    private val recipeAdapter by lazy { RecipeAdapter(
-        onRecipeSelected = { recipe ->
+    private val homeAdapter by lazy { HomeAdapter(
+        onRecipeSelected = { recipeId ->
 
         }
     ) }
-
-    private val homeAdapter by lazy { HomeAdapter(recipeAdapter) }
 
     override fun inflateViewBinding(container: ViewGroup?): FragmentHomeBinding {
         return FragmentHomeBinding.inflate(layoutInflater, container, false)
@@ -41,6 +39,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.categories.collect {
                 categoryAdapter.submitList(it)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.homeRecipes.collect {
+                homeAdapter.submitList(it)
             }
         }
     }

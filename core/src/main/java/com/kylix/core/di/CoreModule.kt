@@ -12,6 +12,8 @@ import com.kylix.core.repositories.auth.AuthRepository
 import com.kylix.core.repositories.auth.AuthRepositoryImpl
 import com.kylix.core.repositories.category.CategoryRepository
 import com.kylix.core.repositories.category.CategoryRepositoryImpl
+import com.kylix.core.repositories.recipe.RecipeRepository
+import com.kylix.core.repositories.recipe.RecipeRepositoryImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -85,4 +87,5 @@ val networkModule = module {
 val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
     single<CategoryRepository> { CategoryRepositoryImpl(get()) }
+    single<RecipeRepository> { RecipeRepositoryImpl(get()) }
 }
