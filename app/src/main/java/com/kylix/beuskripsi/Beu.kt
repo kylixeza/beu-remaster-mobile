@@ -6,6 +6,7 @@ import com.kylix.core.di.databaseModule
 import com.kylix.core.di.datastoreModule
 import com.kylix.core.di.networkModule
 import com.kylix.core.di.repositoryModule
+import com.kylix.home.di.homeModule
 import com.kylix.onboard.di.onBoardModule
 import com.kylix.router.di.routerModule
 import com.kylix.splash.di.splashModule
@@ -29,7 +30,8 @@ class Beu: Application() {
                 routerModule,
                 splashModule,
                 onBoardModule,
-                authModule
+                authModule,
+                homeModule
             )
         }
     }

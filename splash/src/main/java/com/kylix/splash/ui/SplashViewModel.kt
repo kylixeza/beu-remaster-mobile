@@ -2,7 +2,7 @@ package com.kylix.splash.ui
 
 import androidx.lifecycle.viewModelScope
 import com.kylix.common.base.BaseViewModel
-import com.kylix.core.repositories.AuthRepository
+import com.kylix.core.repositories.auth.AuthRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

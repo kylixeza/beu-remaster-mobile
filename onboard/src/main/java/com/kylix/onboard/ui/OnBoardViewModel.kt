@@ -2,7 +2,7 @@ package com.kylix.onboard.ui
 
 import com.kylix.common.base.BaseViewModel
 import com.kylix.common.model.OnBoardContent
-import com.kylix.core.repositories.AuthRepository
+import com.kylix.core.repositories.auth.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.runBlocking

@@ -1,4 +1,4 @@
-package com.kylix.core.repositories
+package com.kylix.core.repositories.auth
 
 import arrow.core.Either
 import com.kylix.common.util.Error

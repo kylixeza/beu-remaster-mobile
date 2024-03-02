@@ -47,4 +47,5 @@ dependencies {
     api(project(Modules.onboard))
     api(project(Modules.auth))
     api(project(Modules.main))
+    api(project(Modules.home))
 }

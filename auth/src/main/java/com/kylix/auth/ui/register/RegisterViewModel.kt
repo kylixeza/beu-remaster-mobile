@@ -2,7 +2,7 @@ package com.kylix.auth.ui.register
 
 import androidx.lifecycle.viewModelScope
 import com.kylix.common.base.BaseViewModel
-import com.kylix.core.repositories.AuthRepository
+import com.kylix.core.repositories.auth.AuthRepository
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(

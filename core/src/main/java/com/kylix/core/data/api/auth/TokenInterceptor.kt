@@ -1,4 +1,4 @@
-package com.kylix.core.data.api
+package com.kylix.core.data.api.auth
 
 import com.kylix.core.data.local.preference.BeuDataStore
 import kotlinx.coroutines.runBlocking

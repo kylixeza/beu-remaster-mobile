@@ -45,5 +45,12 @@ dependencies {
     implementation(Libraries.AndroidX.navigationFragment)
     implementation(Libraries.AndroidX.navigationUI)
 
-    api(project(Modules.common))
+    implementation(Libraries.Koin.koinCore)
+    implementation(Libraries.Koin.koinAndroid)
+
+    implementation(platform(Libraries.Arrow.arrowBOM))
+    implementation(Libraries.Arrow.arrowCore)
+
+    implementation(project(Modules.common))
+    implementation(project(Modules.core))
 }

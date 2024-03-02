@@ -1,4 +1,4 @@
-package com.kylix.core.data.api
+package com.kylix.core.data.api.auth
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.kylix.common.base.BaseResponse

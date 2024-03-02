@@ -1,4 +1,4 @@
-package com.kylix.core.repositories
+package com.kylix.core.repositories.auth
 
 import arrow.core.Either
 import com.haroldadmin.cnradapter.NetworkResponse
@@ -6,7 +6,7 @@ import com.kylix.common.base.BaseResponse
 import com.kylix.common.base.NetworkBoundRequest
 import com.kylix.common.util.Error
 import com.kylix.common.util.Success
-import com.kylix.core.data.api.AuthApiService
+import com.kylix.core.data.api.auth.AuthApiService
 import com.kylix.core.data.api.model.auth.LoginRequest
 import com.kylix.core.data.api.model.auth.RegisterRequest
 import com.kylix.core.data.api.model.auth.TokenResponse

@@ -3,12 +3,15 @@ package com.kylix.core.di
 import androidx.room.Room
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.kylix.core.BuildConfig
-import com.kylix.core.data.api.AuthApiService
-import com.kylix.core.data.api.TokenInterceptor
+import com.kylix.core.data.api.auth.AuthApiService
+import com.kylix.core.data.api.auth.TokenInterceptor
+import com.kylix.core.data.api.recipe.RecipeApiService
 import com.kylix.core.data.local.db.BeuDatabase
 import com.kylix.core.data.local.preference.BeuDataStore
-import com.kylix.core.repositories.AuthRepository
-import com.kylix.core.repositories.AuthRepositoryImpl
+import com.kylix.core.repositories.auth.AuthRepository
+import com.kylix.core.repositories.auth.AuthRepositoryImpl
+import com.kylix.core.repositories.category.CategoryRepository
+import com.kylix.core.repositories.category.CategoryRepositoryImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -73,8 +76,13 @@ val networkModule = module {
     single {
         get<Retrofit>().create(AuthApiService::class.java)
     }
+
+    single {
+        get<Retrofit>().create(RecipeApiService::class.java)
+    }
 }
 
 val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
+    single<CategoryRepository> { CategoryRepositoryImpl(get()) }
 }
