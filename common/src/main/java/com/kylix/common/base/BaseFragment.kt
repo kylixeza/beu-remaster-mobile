@@ -14,6 +14,7 @@ import androidx.viewbinding.ViewBinding
 import com.kylix.common.R
 import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.ScreenOrientation
+import com.kylix.common.util.orZero
 import com.kylix.common.widget.buildLoadingDialog
 import com.kylix.common.widget.errorSnackbar
 import kotlinx.coroutines.launch
@@ -41,15 +42,18 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
     open fun constraintValidator(): ConstraintValidator<VB>? { return null }
     open fun determineScreenOrientation(): ScreenOrientation { return ScreenOrientation.PORTRAIT }
     open fun onDestroyBehaviour() { }
-    open fun onBackPressedBehaviour() { }
+    open fun onBackPressedBehaviour() { requireActivity().finish() }
     open fun onDataSuccessLoaded() {}
-    open fun systemBarColor(): Int { return R.color.white }
+    open fun systemBarColor(): Int? { return null }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if (systemBarColor() != null)
+            requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), systemBarColor().orZero())
+
         onCreateViewBehaviour(inflater, container)
         if(_binding == null) {
             _binding = inflateViewBinding(container)
@@ -69,8 +73,6 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
         } else {
             activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
-
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), systemBarColor())
 
         binding?.apply {
             bind()

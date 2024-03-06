@@ -19,6 +19,7 @@ object Modules {
     const val home = ":home"
     const val camera = ":camera"
     const val profile = ":profile"
+    const val detail = ":detail"
 }
 
 object Libraries {
@@ -120,6 +121,23 @@ object Libraries {
     object Arrow {
         const val arrowBOM = "io.arrow-kt:arrow-stack:1.2.0"
         const val arrowCore = "io.arrow-kt:arrow-core"
+    }
+
+    object ExoPlayer {
+        const val exoPlayer = "com.google.android.exoplayer:exoplayer:2.19.1"
+        const val exoPlayerCore = "com.google.android.exoplayer:exoplayer-core:2.19.1"
+        const val exoPlayerDash = "com.google.android.exoplayer:exoplayer-dash:2.19.1"
+        const val exoPlayerUI = "com.google.android.exoplayer:exoplayer-ui:2.19.1"
+    }
+
+    object Media3 {
+        const val media3ExoPlayer = "androidx.media3:media3-exoplayer:1.2.1"
+        const val media3Dash = "androidx.media3:media3-exoplayer-dash:1.2.1"
+        const val media3UI = "androidx.media3:media3-ui:1.2.1"
+    }
+
+    object Flexbox {
+        const val flexbox = "com.google.android.flexbox:flexbox:3.0.0"
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -19,7 +20,7 @@ infix fun <T> T?.or(default: T): T = this ?: default
 
 infix fun <T> T?.or(default: () -> T): T = this ?: default()
 
-fun Int.orZero() = this.or(0)
+fun Int?.orZero() = this.or(0)
 
 fun Int.orMinusOne() = this.or(-1)
 
@@ -48,3 +49,7 @@ fun RecyclerView.initLinearHorizontal(context: Context, adapter: RecyclerView.Ad
     this.setHasFixedSize(true)
 }
 
+fun RecyclerView.initGridVertical(context: Context, adapter: RecyclerView.Adapter<*>, spanCount: Int) {
+    this.adapter = adapter
+    this.layoutManager = GridLayoutManager(context, spanCount, GridLayoutManager.VERTICAL, false)
+}

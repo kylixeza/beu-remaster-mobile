@@ -8,21 +8,23 @@ import com.kylix.common.util.initLinearHorizontal
 import com.kylix.common.util.initLinearVertical
 import com.kylix.home.adapter.CategoryAdapter
 import com.kylix.home.adapter.HomeAdapter
-import com.kylix.home.adapter.RecipeAdapter
 import com.kylix.home.databinding.FragmentHomeBinding
+import com.kylix.home.navigation.HomeNavigation
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override val viewModel by viewModel<HomeViewModel>()
 
+    private val homeNavigation by inject<HomeNavigation>()
     private val categoryAdapter by lazy { CategoryAdapter() }
 
     private val homeAdapter by lazy { HomeAdapter(
         onRecipeSelected = { recipeId ->
-
+            homeNavigation.navigateToDetail(recipeId, requireActivity())
         }
     ) }
 

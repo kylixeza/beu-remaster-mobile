@@ -5,9 +5,11 @@ import com.haroldadmin.cnradapter.NetworkResponse
 import com.kylix.common.base.BaseResponse
 import com.kylix.common.base.NetworkOnlyResource
 import com.kylix.common.model.HomeRecipe
+import com.kylix.common.model.RecipeDetail
 import com.kylix.common.util.Error
 import com.kylix.common.util.Success
 import com.kylix.core.data.api.model.recipe.HomeRecipeResponse
+import com.kylix.core.data.api.model.recipe.RecipeDetailResponse
 import com.kylix.core.data.api.recipe.RecipeApiService
 
 class RecipeRepositoryImpl(
@@ -22,6 +24,19 @@ class RecipeRepositoryImpl(
             override fun List<HomeRecipeResponse>.mapTransform(): List<HomeRecipe> {
                 return map { it.toHomeRecipe() }
             }
+        }.run()
+    }
+
+    override suspend fun getRecipeDetail(recipeId: String): Either<Error, Success<RecipeDetail>> {
+        return object : NetworkOnlyResource<RecipeDetail, RecipeDetailResponse>() {
+            override suspend fun createCall(): NetworkResponse<BaseResponse<RecipeDetailResponse>, BaseResponse<Unit>> {
+                return api.getRecipeDetail(recipeId)
+            }
+
+            override fun RecipeDetailResponse.mapTransform(): RecipeDetail {
+                return toRecipeDetail()
+            }
+
         }.run()
     }
 }

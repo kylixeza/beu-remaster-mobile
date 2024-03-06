@@ -1,0 +1,14 @@
+<resources>
+    <string name="comment">Komentar</string>
+    <string name="see_comments">Lihat Komentar</string>
+    <string name="ingredients">Bahan-bahan</string>
+    <string name="tools">Alat-alat</string>
+    <string name="steps">Langkah-langkah</string>
+    <string name="description">Deskripsi</string>
+    <string name="estimate_time">Estimasi Waktu</string>
+    <string name="nutrition_information">Informasi Gizi</string>
+    <string name="review_summary">Ulasan Singkat</string>
+
+    <string name="rated_by">Diulas oleh %d orang</string>
+    <string name="comments_count">%d Komentar Pengguna</string>
+</resources>

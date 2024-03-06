@@ -33,5 +33,5 @@ abstract class NetworkBoundRequest<RequestType> {
 
     protected abstract suspend fun createCall(): NetworkResponse<BaseResponse<RequestType>, BaseResponse<Unit>>
 
-    protected abstract suspend fun saveCallResult(data: RequestType)
+    protected open suspend fun saveCallResult(data: RequestType) { }
 }

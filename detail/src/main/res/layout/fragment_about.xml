@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingVertical="12dp"
+    android:paddingHorizontal="16dp"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_title_number_of_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/neutral_900"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:text="@string/review_summary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_number_of_rating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/poppins"
+                android:textSize="10sp"
+                android:textColor="@color/neutral_900"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/rating_bar"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_number_of_rating"
+                tools:text="Diulas oleh 3 Orang"/>
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="@android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
+                android:isIndicator="true"
+                android:max="5"
+                android:progressTint="@color/primary_700"
+                app:layout_constraintEnd_toEndOf="@id/tv_average_rating"
+                app:layout_constraintTop_toTopOf="@id/tv_average_rating"/>
+
+            <TextView
+                android:id="@+id/tv_average_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/primary_700"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title_number_of_rating"
+                app:layout_constraintBottom_toBottomOf="@id/tv_number_of_rating"
+                tools:text="4.0"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/tv_title_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/description"
+            android:textColor="@color/neutral_900"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/neutral_900"
+            android:textSize="12sp"
+            android:visibility="visible"
+            tools:text="Nasi Goreng Asia merupakan jenis masakan Indonesian Food. Tutorial memasak dilakukan oleh Chef Reina." />
+
+        <TextView
+            android:id="@+id/tv_title_estimate_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/estimate_time"
+            android:textColor="@color/neutral_900"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_estimate_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/neutral_900"
+            android:textSize="11sp"
+            tools:text="20 - 25 Menit" />
+
+        <TextView
+            android:id="@+id/tv_nutrition_information"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/nutrition_information"
+            android:textColor="@color/neutral_900"
+            android:textSize="12sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_nutrition_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:nestedScrollingEnabled="false"/>
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -3,10 +3,13 @@ package com.kylix.common.base
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.kylix.common.R
 import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.ScreenOrientation
+import com.kylix.common.util.orZero
 import com.kylix.common.widget.buildLoadingDialog
 import com.kylix.common.widget.errorSnackbar
 import kotlinx.coroutines.async
@@ -33,9 +36,12 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
     open fun determineScreenOrientation(): ScreenOrientation? { return ScreenOrientation.PORTRAIT }
     open fun onBackPressedBehaviour() { finish() }
     open fun onDataSuccessLoaded() {}
+    open fun systemBarColor(): Int? { return null }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (systemBarColor() != null)
+            window.statusBarColor = ContextCompat.getColor(this, systemBarColor().orZero())
         _binding = inflateViewBinding()
         setContentView(binding.root)
     }

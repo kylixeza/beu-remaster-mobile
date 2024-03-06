@@ -5,6 +5,7 @@ import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.kylix.core.BuildConfig
 import com.kylix.core.data.api.auth.AuthApiService
 import com.kylix.core.data.api.auth.TokenInterceptor
+import com.kylix.core.data.api.favorite.FavoriteApiService
 import com.kylix.core.data.api.recipe.RecipeApiService
 import com.kylix.core.data.local.db.BeuDatabase
 import com.kylix.core.data.local.preference.BeuDataStore
@@ -12,6 +13,8 @@ import com.kylix.core.repositories.auth.AuthRepository
 import com.kylix.core.repositories.auth.AuthRepositoryImpl
 import com.kylix.core.repositories.category.CategoryRepository
 import com.kylix.core.repositories.category.CategoryRepositoryImpl
+import com.kylix.core.repositories.favorite.FavoriteRepository
+import com.kylix.core.repositories.favorite.FavoriteRepositoryImpl
 import com.kylix.core.repositories.recipe.RecipeRepository
 import com.kylix.core.repositories.recipe.RecipeRepositoryImpl
 import okhttp3.OkHttpClient
@@ -82,10 +85,15 @@ val networkModule = module {
     single {
         get<Retrofit>().create(RecipeApiService::class.java)
     }
+
+    single {
+        get<Retrofit>().create(FavoriteApiService::class.java)
+    }
 }
 
 val repositoryModule = module {
     single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
     single<CategoryRepository> { CategoryRepositoryImpl(get()) }
     single<RecipeRepository> { RecipeRepositoryImpl(get()) }
+    single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
 }

@@ -1,6 +1,7 @@
 package com.kylix.core.data.api.model.recipe
 
 import com.google.gson.annotations.SerializedName
+import com.kylix.common.model.RecipeDetail
 import com.kylix.core.data.api.model.nutrition.NutritionResponse
 import com.kylix.core.data.api.model.review.ReviewResponse
 import java.math.BigDecimal
@@ -16,7 +17,7 @@ data class RecipeDetailResponse(
     val tools: List<String>,
     val steps: List<String>,
     @field:SerializedName("average_rating")
-    val averageRating: BigDecimal,
+    val averageRating: Double,
     @field:SerializedName("average_count")
     val averageCount: Long,
     val description: String,
@@ -27,4 +28,21 @@ data class RecipeDetailResponse(
     @field:SerializedName("nutrition_information")
     val nutritionInformation: List<NutritionResponse>,
     val reviews: List<ReviewResponse>
-)
+) {
+    fun toRecipeDetail() = RecipeDetail(
+        recipeId = recipeId,
+        isFavorite = isFavorite,
+        name = name,
+        video = video,
+        ingredients = ingredients,
+        tools = tools,
+        steps = steps,
+        averageRating = averageRating,
+        averageCount = averageCount,
+        description = description,
+        estimateTime = estimateTime,
+        commentsCount = commentsCount,
+        nutritionInformation = nutritionInformation.map { it.toNutrition() },
+        reviews = reviews.map { it.toReview() }
+    )
+}
