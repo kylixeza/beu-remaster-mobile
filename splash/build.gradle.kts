@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.kylix.splash"
-    compileSdk = 34
+    compileSdk = App.compileSdk
 
     defaultConfig {
-        minSdk = 21
+        minSdk = App.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

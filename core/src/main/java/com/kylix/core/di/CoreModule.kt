@@ -6,7 +6,9 @@ import com.kylix.core.BuildConfig
 import com.kylix.core.data.api.auth.AuthApiService
 import com.kylix.core.data.api.auth.TokenInterceptor
 import com.kylix.core.data.api.favorite.FavoriteApiService
+import com.kylix.core.data.api.history.HistoryApiService
 import com.kylix.core.data.api.recipe.RecipeApiService
+import com.kylix.core.data.api.review.ReviewApiService
 import com.kylix.core.data.local.db.BeuDatabase
 import com.kylix.core.data.local.preference.BeuDataStore
 import com.kylix.core.repositories.auth.AuthRepository
@@ -15,8 +17,12 @@ import com.kylix.core.repositories.category.CategoryRepository
 import com.kylix.core.repositories.category.CategoryRepositoryImpl
 import com.kylix.core.repositories.favorite.FavoriteRepository
 import com.kylix.core.repositories.favorite.FavoriteRepositoryImpl
+import com.kylix.core.repositories.history.HistoryRepository
+import com.kylix.core.repositories.history.HistoryRepositoryImpl
 import com.kylix.core.repositories.recipe.RecipeRepository
 import com.kylix.core.repositories.recipe.RecipeRepositoryImpl
+import com.kylix.core.repositories.review.ReviewRepository
+import com.kylix.core.repositories.review.ReviewRepositoryImpl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -89,6 +95,14 @@ val networkModule = module {
     single {
         get<Retrofit>().create(FavoriteApiService::class.java)
     }
+
+    single {
+        get<Retrofit>().create(ReviewApiService::class.java)
+    }
+
+    single {
+        get<Retrofit>().create(HistoryApiService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -96,4 +110,6 @@ val repositoryModule = module {
     single<CategoryRepository> { CategoryRepositoryImpl(get()) }
     single<RecipeRepository> { RecipeRepositoryImpl(get()) }
     single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
+    single<ReviewRepository> { ReviewRepositoryImpl(get()) }
+    single<HistoryRepository> { HistoryRepositoryImpl(get()) }
 }

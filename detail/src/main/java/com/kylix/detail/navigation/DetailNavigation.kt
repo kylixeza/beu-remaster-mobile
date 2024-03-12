@@ -10,4 +10,6 @@ abstract class DetailNavigation {
         intent.putExtra(DetailRecipeActivity.EXTRA_RECIPE_ID, recipeId)
         activity.startActivity(intent)
     }
+
+    abstract fun navigateToReview(historyId: String, activity: Activity)
 }

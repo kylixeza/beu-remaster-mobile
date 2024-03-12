@@ -9,6 +9,7 @@ import com.kylix.core.di.repositoryModule
 import com.kylix.detail.di.detailModule
 import com.kylix.home.di.homeModule
 import com.kylix.onboard.di.onBoardModule
+import com.kylix.review.di.reviewModule
 import com.kylix.router.di.routerModule
 import com.kylix.splash.di.splashModule
 import org.koin.android.ext.koin.androidContext
@@ -33,7 +34,8 @@ class Beu: Application() {
                 onBoardModule,
                 authModule,
                 homeModule,
-                detailModule
+                detailModule,
+                reviewModule
             )
         }
     }

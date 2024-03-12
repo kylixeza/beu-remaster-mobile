@@ -1,6 +1,7 @@
 package com.kylix.common.util
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
@@ -33,6 +34,17 @@ fun ImageView.draw(
 ) {
     Glide.with(context)
         .load(url)
+        .requestBuilder()
+        .into(this)
+}
+
+fun ImageView.draw(
+    context: Context,
+    bitmap: Bitmap,
+    requestBuilder: RequestBuilder<Drawable>.() -> RequestBuilder<Drawable> = { this }
+) {
+    Glide.with(context)
+        .load(bitmap)
         .requestBuilder()
         .into(this)
 }

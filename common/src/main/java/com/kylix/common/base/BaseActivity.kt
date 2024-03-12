@@ -57,7 +57,7 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
             else
                 android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         } else {
-            android.content.pm.ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
+            android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR
         }
 
         binding.apply {

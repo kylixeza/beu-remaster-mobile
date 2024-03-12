@@ -11,4 +11,8 @@
 
     <string name="rated_by">Diulas oleh %d orang</string>
     <string name="comments_count">%d Komentar Pengguna</string>
+    <string name="review">Ulas Sekarang</string>
+    <string name="finish_already">Dah selesai masaknya?</string>
+    <string name="cook_for">Kamu memasak selama %s</string>
+    <string name="review_now">Beri ulasan yuk!</string>
 </resources>

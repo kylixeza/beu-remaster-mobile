@@ -49,4 +49,5 @@ dependencies {
     api(project(Modules.main))
     api(project(Modules.home))
     api(project(Modules.detail))
+    api(project(Modules.review))
 }

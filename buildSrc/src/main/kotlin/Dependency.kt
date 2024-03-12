@@ -20,6 +20,7 @@ object Modules {
     const val camera = ":camera"
     const val profile = ":profile"
     const val detail = ":detail"
+    const val review = ":review"
 }
 
 object Libraries {
@@ -105,6 +106,7 @@ object Libraries {
         const val dotsIndicator = "com.tbuonomo:dotsindicator:5.0"
         const val shimmer = "com.facebook.shimmer:shimmer:0.5.0"
         const val snackify = "com.github.Musfick:Snackify:0.1.2"
+        const val sneaker = "com.irozon.sneaker:sneaker:2.0.0"
     }
 
     object Glide {

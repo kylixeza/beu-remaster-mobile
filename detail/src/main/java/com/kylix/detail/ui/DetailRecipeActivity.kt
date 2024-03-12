@@ -16,20 +16,25 @@ import com.kylix.common.base.BaseActivity
 import com.kylix.common.util.hide
 import com.kylix.common.util.show
 import com.kylix.detail.adapter.DetailRecipePageAdapter
+import com.kylix.detail.navigation.DetailNavigation
 import com.kylix.detail.ui.about.AboutFragment
 import com.kylix.detail.ui.instruction.InstructionFragment
 import com.kylix.detail.ui.review.ReviewFragment
+import com.kylix.detail.widget.CustomSneaker
 import com.kylix.recipe.R
 import com.kylix.recipe.databinding.ActivityDetailRecipeBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
 
     override val viewModel by viewModel<DetailRecipeViewModel>()
+    private val navigation by inject<DetailNavigation>()
 
     private val recipePageAdapter by lazy { DetailRecipePageAdapter(supportFragmentManager, lifecycle) }
+    private val customSneaker by lazy { CustomSneaker(this) }
 
     private lateinit var exoPlayer: ExoPlayer
 
@@ -86,6 +91,16 @@ class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
                 )
             }
         }
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.elapsedTime.collect {
+                if (it.isBlank()) return@collect
+                customSneaker.showSuccessSneaker(it) {
+                    val historyId = viewModel.historyId.value
+                    navigation.navigateToReview(historyId, this@DetailRecipeActivity)
+                }
+            }
+        }
     }
 
     override fun systemBarColor(): Int {
@@ -124,6 +139,7 @@ class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
                     binding.pbVideoPlayer.hide()
                 }
                 ExoPlayer.STATE_BUFFERING -> binding.pbVideoPlayer.show()
+                ExoPlayer.STATE_ENDED -> viewModel.onStopTimer()
                 else -> super.onPlaybackStateChanged(playbackState)
             }
         }

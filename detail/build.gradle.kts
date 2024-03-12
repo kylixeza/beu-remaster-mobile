@@ -42,16 +42,13 @@ dependencies {
     implementation(Libraries.AndroidX.material)
     implementation(Libraries.AndroidX.constraintLayout)
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
+    implementation(Libraries.CustomUI.sneaker)
+    implementation(Libraries.Glide.glide)
 
     implementation(Libraries.Flexbox.flexbox)
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
-
-/*    implementation(Libraries.ExoPlayer.exoPlayer)
-    implementation(Libraries.ExoPlayer.exoPlayerCore)
-    implementation(Libraries.ExoPlayer.exoPlayerUI)
-    implementation(Libraries.ExoPlayer.exoPlayerDash)*/
 
     implementation(Libraries.Media3.media3ExoPlayer)
     implementation(Libraries.Media3.media3Dash)

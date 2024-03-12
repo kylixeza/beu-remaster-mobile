@@ -11,7 +11,10 @@ import com.kylix.common.model.Review
 import com.kylix.common.util.draw
 import com.kylix.recipe.databinding.ItemReviewBinding
 
-class ReviewAdapter: BaseRecyclerViewAdapter<ItemReviewBinding, Review>() {
+class ReviewAdapter(
+    private val outsidePadding: Int = 0,
+    private val onImagePressed: (String) -> Unit = {}
+): BaseRecyclerViewAdapter<ItemReviewBinding, Review>() {
 
     override fun inflateViewBinding(parent: ViewGroup): ItemReviewBinding {
         return ItemReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,7 +27,10 @@ class ReviewAdapter: BaseRecyclerViewAdapter<ItemReviewBinding, Review>() {
         ivImageReviewer.draw(root.context, item.avatar)
         tvReview.text = item.comment
 
-        val reviewImageAdapter = ReviewImageAdapter()
+        val reviewImageAdapter = ReviewImageAdapter(
+            outsidePadding = outsidePadding,
+            onImagePressed = { onImagePressed(it) }
+        )
 
         val flexboxLayoutManager = FlexboxLayoutManager(root.context).apply {
             flexWrap = FlexWrap.WRAP
