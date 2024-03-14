@@ -18,7 +18,6 @@ import com.kylix.common.widget.buildSuccessDialog
 import com.kylix.review.adapter.ImagesAdapter
 import com.kylix.review.databinding.ActivityReviewBinding
 import com.kylix.review.util.CameraManager
-import com.kylix.review.widget.bind
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch

@@ -9,6 +9,8 @@ import com.google.android.flexbox.JustifyContent
 import com.kylix.common.base.BaseRecyclerViewAdapter
 import com.kylix.common.model.Review
 import com.kylix.common.util.draw
+import com.kylix.common.widget.bind
+import com.kylix.recipe.R
 import com.kylix.recipe.databinding.ItemReviewBinding
 
 class ReviewAdapter(
@@ -23,8 +25,16 @@ class ReviewAdapter(
     override fun ItemReviewBinding.bind(item: Review) {
         tvNameReviewer.text = item.username
         tvRating.text = item.rating.toString()
-        ratingBar.rating = item.rating.toFloat()
-        ivImageReviewer.draw(root.context, item.avatar)
+        ratingBar.bind(
+            root.context,
+            starSize = 24,
+            defaultStars = item.rating,
+            isClickable = false
+        )
+        ivImageReviewer.draw(root.context, item.avatar) {
+            placeholder(com.kylix.common.R.drawable.ilu_default_profile_picture)
+                .circleCrop()
+        }
         tvReview.text = item.comment
 
         val reviewImageAdapter = ReviewImageAdapter(
