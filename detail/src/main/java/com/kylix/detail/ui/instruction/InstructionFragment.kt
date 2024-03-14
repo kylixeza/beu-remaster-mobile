@@ -9,6 +9,7 @@ import com.kylix.common.util.initLinearVertical
 import com.kylix.detail.adapter.IngredientToolAdapter
 import com.kylix.detail.adapter.StepAdapter
 import com.kylix.detail.ui.DetailRecipeViewModel
+import com.kylix.recipe.R
 import com.kylix.recipe.databinding.FragmentInstructionBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,7 +49,7 @@ class InstructionFragment : BaseFragment<FragmentInstructionBinding>() {
         }
 
         fun getName(): String {
-            return "Instruction"
+            return "Instruksi"
         }
     }
 

@@ -55,7 +55,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
         }
 
         fun getName(): String {
-            return "About"
+            return "Tentang"
         }
     }
 

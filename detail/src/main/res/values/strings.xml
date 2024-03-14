@@ -1,4 +1,7 @@
 <resources>
+    <string name="instruction">Instruksi</string>
+    <string name="about">Tentang</string>
+    <string name="review">Ulasan</string>
     <string name="comment">Komentar</string>
     <string name="see_comments">Lihat Komentar</string>
     <string name="ingredients">Bahan-bahan</string>
@@ -11,8 +14,8 @@
 
     <string name="rated_by">Diulas sebanyak %d kali</string>
     <string name="comments_count">%d Komentar Pengguna</string>
-    <string name="review">Ulas Sekarang</string>
+    <string name="review_now">Ulas Sekarang</string>
     <string name="finish_already">Dah selesai masaknya?</string>
     <string name="cook_for">Kamu memasak selama %s</string>
-    <string name="review_now">Beri ulasan yuk!</string>
+    <string name="lets_give_review">Beri ulasan yuk!</string>
 </resources>

@@ -8,6 +8,7 @@ import com.kylix.common.util.orZero
 import com.kylix.common.widget.buildFullSizeImageDialog
 import com.kylix.detail.adapter.ReviewAdapter
 import com.kylix.detail.ui.DetailRecipeViewModel
+import com.kylix.recipe.R
 import com.kylix.recipe.databinding.FragmentReviewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -49,7 +50,7 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>() {
         }
 
         fun getName(): String {
-            return "Review"
+            return "Ulasan"
         }
     }
 
