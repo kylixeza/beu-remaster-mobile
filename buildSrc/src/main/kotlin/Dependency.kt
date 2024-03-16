@@ -21,6 +21,7 @@ object Modules {
     const val profile = ":profile"
     const val detail = ":detail"
     const val review = ":review"
+    const val comment = ":comment"
 }
 
 object Libraries {

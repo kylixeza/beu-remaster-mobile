@@ -92,4 +92,8 @@ class DetailRecipeViewModel(
         }
     }
 
+    fun getRecipeId(intent: Intent): String {
+        return intent.getStringExtra(DetailRecipeActivity.EXTRA_RECIPE_ID).orEmpty()
+    }
+
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reply">Balas</string>
+    <string name="add_comment">Tambahkan komentar</string>
+    <string name="see_replies">Lihat %d balasan</string>
+    <string name="close_comments">Tutup komentar</string>
+    <string name="no_comments_yet">Belum ada komentar</string>
+    <string name="reply_to">Balas %s</string>
+</resources>

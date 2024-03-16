@@ -10,8 +10,8 @@ import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
-import androidx.media3.ui.AspectRatioFrameLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kylix.comment.ui.CommentFragment
 import com.kylix.common.base.BaseActivity
 import com.kylix.common.util.hide
 import com.kylix.common.util.show
@@ -72,6 +72,14 @@ class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
 
         appBarDetail.ivArrowBack.setOnClickListener { finish() }
         appBarDetail.ivFavorite.setOnClickListener { viewModel.onFavoriteIconPressed() }
+
+        bottomBarDetail.apply {
+            btnSeeComments.setOnClickListener {
+                val recipeId = viewModel.getRecipeId(intent)
+                val commentFragment = CommentFragment.newInstance(recipeId)
+                commentFragment.show(supportFragmentManager, CommentFragment::class.java.simpleName)
+            }
+        }
 
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.recipe.collect {

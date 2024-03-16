@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kylix.recipe"
+    namespace = "com.kylix.comment"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -30,6 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         viewBinding = true
     }
@@ -37,27 +38,20 @@ android {
 
 dependencies {
 
+    implementation(Libraries.AndroidX.appCompat)
     implementation(Libraries.AndroidX.coreKtx)
     implementation(Libraries.AndroidX.fragmentKtx)
     implementation(Libraries.AndroidX.material)
     implementation(Libraries.AndroidX.constraintLayout)
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
-    implementation(Libraries.CustomUI.sneaker)
     implementation(Libraries.Glide.glide)
-
-    implementation(Libraries.Flexbox.flexbox)
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
-    implementation(Libraries.Media3.media3ExoPlayer)
-    implementation(Libraries.Media3.media3Dash)
-    implementation(Libraries.Media3.media3UI)
-
     implementation(platform(Libraries.Arrow.arrowBOM))
     implementation(Libraries.Arrow.arrowCore)
 
-    implementation(project(Modules.comment))
     implementation(project(Modules.common))
     implementation(project(Modules.core))
 }

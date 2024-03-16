@@ -5,6 +5,7 @@ import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.kylix.core.BuildConfig
 import com.kylix.core.data.api.auth.AuthApiService
 import com.kylix.core.data.api.auth.TokenInterceptor
+import com.kylix.core.data.api.comment.CommentApiService
 import com.kylix.core.data.api.favorite.FavoriteApiService
 import com.kylix.core.data.api.history.HistoryApiService
 import com.kylix.core.data.api.recipe.RecipeApiService
@@ -15,6 +16,8 @@ import com.kylix.core.repositories.auth.AuthRepository
 import com.kylix.core.repositories.auth.AuthRepositoryImpl
 import com.kylix.core.repositories.category.CategoryRepository
 import com.kylix.core.repositories.category.CategoryRepositoryImpl
+import com.kylix.core.repositories.comment.CommentRepository
+import com.kylix.core.repositories.comment.CommentRepositoryImpl
 import com.kylix.core.repositories.favorite.FavoriteRepository
 import com.kylix.core.repositories.favorite.FavoriteRepositoryImpl
 import com.kylix.core.repositories.history.HistoryRepository
@@ -103,6 +106,10 @@ val networkModule = module {
     single {
         get<Retrofit>().create(HistoryApiService::class.java)
     }
+
+    single {
+        get<Retrofit>().create(CommentApiService::class.java)
+    }
 }
 
 val repositoryModule = module {
@@ -112,4 +119,5 @@ val repositoryModule = module {
     single<FavoriteRepository> { FavoriteRepositoryImpl(get()) }
     single<ReviewRepository> { ReviewRepositoryImpl(get()) }
     single<HistoryRepository> { HistoryRepositoryImpl(get()) }
+    single<CommentRepository> { CommentRepositoryImpl(get()) }
 }
