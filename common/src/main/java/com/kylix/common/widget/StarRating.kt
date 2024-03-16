@@ -8,7 +8,7 @@ import com.kylix.common.databinding.IncludeStarsRatingBinding
 fun IncludeStarsRatingBinding.bind(
     context: Context,
     defaultStars: Int = 0,
-    starSize: Int = ivStar1.height,
+    customStarSize: Int? = null,
     isClickable: Boolean = true,
     onStarPressed: (Int) -> Unit = {}
 ) {
@@ -47,9 +47,12 @@ fun IncludeStarsRatingBinding.bind(
         }
     }
 
-    stars.forEach {
-        it.isClickable = isClickable
-        it.layoutParams.height = starSize * (context.resources.displayMetrics.density).toInt()
-        it.layoutParams.width = starSize * (context.resources.displayMetrics.density).toInt()
-    }
+        stars.forEach {
+            it.isClickable = isClickable
+            if (customStarSize != null) {
+                it.layoutParams.height = customStarSize * (context.resources.displayMetrics.density).toInt()
+                it.layoutParams.width = customStarSize * (context.resources.displayMetrics.density).toInt()
+            }
+        }
+
 }

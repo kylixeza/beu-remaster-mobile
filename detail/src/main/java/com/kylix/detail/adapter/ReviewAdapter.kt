@@ -10,7 +10,6 @@ import com.kylix.common.base.BaseRecyclerViewAdapter
 import com.kylix.common.model.Review
 import com.kylix.common.util.draw
 import com.kylix.common.widget.bind
-import com.kylix.recipe.R
 import com.kylix.recipe.databinding.ItemReviewBinding
 
 class ReviewAdapter(
@@ -27,7 +26,7 @@ class ReviewAdapter(
         tvRating.text = item.rating.toString()
         ratingBar.bind(
             root.context,
-            starSize = 24,
+            customStarSize = 24,
             defaultStars = item.rating,
             isClickable = false
         )

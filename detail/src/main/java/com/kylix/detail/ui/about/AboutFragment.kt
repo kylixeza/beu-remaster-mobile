@@ -3,7 +3,6 @@ package com.kylix.detail.ui.about
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.kylix.common.base.BaseFragment
-import com.kylix.common.base.BaseViewModel
 import com.kylix.common.util.initLinearVertical
 import com.kylix.common.widget.bind
 import com.kylix.detail.adapter.NutritionAdapter
@@ -36,7 +35,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
                     tvAverageRating.text = it.averageRating.toString()
                     ratingBar.bind(
                         requireContext(),
-                        starSize = 24,
+                        customStarSize = 24,
                         defaultStars = it.averageRating.roundToInt(),
                         isClickable = false,
                     )
