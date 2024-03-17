@@ -24,6 +24,7 @@
             <option value="$PROJECT_DIR$/auth" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/camera" />
+            <option value="$PROJECT_DIR$/category" />
             <option value="$PROJECT_DIR$/comment" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/core" />

@@ -19,6 +19,7 @@ object Modules {
     const val home = ":home"
     const val camera = ":camera"
     const val profile = ":profile"
+    const val category = ":category"
     const val detail = ":detail"
     const val review = ":review"
     const val comment = ":comment"

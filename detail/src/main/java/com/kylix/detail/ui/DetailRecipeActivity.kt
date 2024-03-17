@@ -95,7 +95,7 @@ class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
             viewModel.isFavorite.collect {
                 appBarDetail.ivFavorite.setImageResource(
                     if (it) com.kylix.common.R.drawable.ic_favorite
-                    else com.kylix.common.R.drawable.ic_unfavorite
+                    else com.kylix.common.R.drawable.ic_unfavorite_white
                 )
             }
         }

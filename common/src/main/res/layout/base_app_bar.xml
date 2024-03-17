@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/primary_700"
-    android:paddingVertical="6dp"
+    android:paddingVertical="2dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_title"
             app:layout_constraintBottom_toBottomOf="@id/tv_title"
-            android:src="@drawable/ic_unfavorite"/>
+            android:src="@drawable/ic_unfavorite_white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

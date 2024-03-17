@@ -1,12 +1,10 @@
-import org.jetbrains.kotlin.ir.backend.js.compile
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.kylix.router"
+    namespace = "com.kylix.category"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -32,23 +30,27 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
     implementation(Libraries.AndroidX.coreKtx)
-    implementation(Libraries.AndroidX.appCompat)
+    implementation(Libraries.AndroidX.fragmentKtx)
     implementation(Libraries.AndroidX.material)
+    implementation(Libraries.AndroidX.constraintLayout)
+    implementation(Libraries.AndroidX.lifecycleViewModelKtx)
+    implementation(Libraries.CustomUI.sneaker)
+    implementation(Libraries.Glide.glide)
 
-    api(Libraries.Koin.koinCore)
+    implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
-    api(project(Modules.splash))
-    api(project(Modules.onboard))
-    api(project(Modules.auth))
-    api(project(Modules.main))
-    api(project(Modules.home))
-    api(project(Modules.category))
-    api(project(Modules.detail))
-    api(project(Modules.review))
+    implementation(platform(Libraries.Arrow.arrowBOM))
+    implementation(Libraries.Arrow.arrowCore)
+
+    implementation(project(Modules.common))
+    implementation(project(Modules.core))
 }

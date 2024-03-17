@@ -2,6 +2,7 @@ package com.kylix.beuskripsi
 
 import android.app.Application
 import com.kylix.auth.di.authModule
+import com.kylix.category.di.categoryModule
 import com.kylix.core.di.databaseModule
 import com.kylix.core.di.datastoreModule
 import com.kylix.core.di.networkModule
@@ -35,7 +36,8 @@ class Beu: Application() {
                 authModule,
                 homeModule,
                 detailModule,
-                reviewModule
+                reviewModule,
+                categoryModule
             )
         }
     }

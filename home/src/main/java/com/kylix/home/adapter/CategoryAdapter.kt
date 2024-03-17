@@ -7,7 +7,7 @@ import com.kylix.common.model.Category
 import com.kylix.home.databinding.ItemCategoryBinding
 
 class CategoryAdapter(
-    private val onCategorySelected: (String) -> Unit = {}
+    private val onCategorySelected: (Category) -> Unit = {}
 ): BaseRecyclerViewAdapter<ItemCategoryBinding, Category>() {
     override fun inflateViewBinding(parent: ViewGroup): ItemCategoryBinding {
         return ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -15,6 +15,6 @@ class CategoryAdapter(
 
     override fun ItemCategoryBinding.bind(item: Category) {
         tvCategory.text = item.name
-        root.setOnClickListener { onCategorySelected.invoke(item.categoryId) }
+        root.setOnClickListener { onCategorySelected.invoke(item) }
     }
 }

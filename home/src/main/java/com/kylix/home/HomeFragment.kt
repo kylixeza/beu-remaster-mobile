@@ -20,7 +20,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val viewModel by viewModel<HomeViewModel>()
 
     private val homeNavigation by inject<HomeNavigation>()
-    private val categoryAdapter by lazy { CategoryAdapter() }
+    private val categoryAdapter by lazy { CategoryAdapter(
+        onCategorySelected = { homeNavigation.navigateToCategory(requireActivity(), it.categoryId, it.name) }
+    ) }
 
     private val homeAdapter by lazy { HomeAdapter(
         onRecipeSelected = { recipeId ->
