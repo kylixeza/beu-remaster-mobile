@@ -15,7 +15,7 @@ interface AuthRepository {
     ): Either<Error, Success<Unit>>
 
     suspend fun login(
-        email: String,
+        identifier: String,
         password: String
     ): Either<Error, Success<Unit>>
 

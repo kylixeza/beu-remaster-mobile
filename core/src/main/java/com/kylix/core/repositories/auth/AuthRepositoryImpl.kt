@@ -42,11 +42,11 @@ class AuthRepositoryImpl(
         }.run()
     }
 
-    override suspend fun login(email: String, password: String): Either<Error, Success<Unit>> {
+    override suspend fun login(identifier: String, password: String): Either<Error, Success<Unit>> {
         return object : NetworkBoundRequest<TokenResponse>() {
             override suspend fun createCall(): NetworkResponse<BaseResponse<TokenResponse>, BaseResponse<Unit>> {
                 val body = LoginRequest(
-                    email = email,
+                    identifier = identifier,
                     password = password
                 )
                 return authApiService.login(body)

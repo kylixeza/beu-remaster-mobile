@@ -9,10 +9,10 @@ class LoginViewModel(
     private val authRepository: AuthRepository
 ) : BaseViewModel() {
 
-    fun login(email: String, password: String) {
+    fun login(identifier: String, password: String) {
         viewModelScope.launch {
             onDataLoading()
-            authRepository.login(email, password).let { result ->
+            authRepository.login(identifier, password).let { result ->
                 if (result.isRight()) {
                     onDataSuccess()
                 } else {

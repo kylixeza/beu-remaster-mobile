@@ -32,13 +32,13 @@
         app:layout_constraintTop_toBottomOf="@id/iv_main_logo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email"
+        android:id="@+id/til_identifier"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
-        android:hint="@string/email"
+        android:hint="@string/identifier"
         app:boxBackgroundColor="@color/white"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_login">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_email"
+            android:id="@+id/edt_identifier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -71,7 +71,7 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_email">
+        app:layout_constraintTop_toBottomOf="@id/til_identifier">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_password"

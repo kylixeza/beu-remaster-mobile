@@ -29,10 +29,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
 
         btnLogin.setOnClickListener {
-            val email = edtEmail.text.toString()
+            val identifier = edtIdentifier.text.toString()
             val password = edtPassword.text.toString()
 
-            viewModel.login(email, password)
+            viewModel.login(identifier, password)
         }
     }
 

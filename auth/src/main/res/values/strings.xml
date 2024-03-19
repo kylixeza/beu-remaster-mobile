@@ -2,6 +2,7 @@
     <string name="login">Masuk</string>
     <string name="register">Daftar</string>
     <string name="email">Email</string>
+    <string name="identifier">Email / Username / Nomor Telepon</string>
     <string name="password">Password</string>
     <string name="forget_password">Lupa password?</string>
     <string name="username">Username</string>
