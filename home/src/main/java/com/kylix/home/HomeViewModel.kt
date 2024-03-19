@@ -5,6 +5,7 @@ import com.kylix.common.base.BaseViewModel
 import com.kylix.common.model.Category
 import com.kylix.common.model.HomeRecipe
 import com.kylix.core.repositories.category.CategoryRepository
+import com.kylix.core.repositories.profile.ProfileRepository
 import com.kylix.core.repositories.recipe.RecipeRepository
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,8 +14,12 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val categoryRepository: CategoryRepository,
-    private val recipeRepository: RecipeRepository
+    private val recipeRepository: RecipeRepository,
+    private val profileRepository: ProfileRepository
 ): BaseViewModel() {
+
+    private val _greeting = MutableStateFlow("")
+    val greeting = _greeting.asStateFlow()
 
     private val _categories = MutableStateFlow(emptyList<Category>())
     val categories = _categories.asStateFlow()
@@ -22,11 +27,16 @@ class HomeViewModel(
     private val _homeRecipes = MutableStateFlow(emptyList<HomeRecipe>())
     val homeRecipes = _homeRecipes.asStateFlow()
 
-    init {
+    fun getHomeData() {
         viewModelScope.launch {
             onDataLoading()
-            async { getCategories() }.await()
-            async { getHomeRecipes() }.await()
+            val categoryDeferred = async { getCategories() }
+            val recipesDeferred = async { getHomeRecipes() }
+            val greetingDeferred = async { greeting() }
+
+            categoryDeferred.await()
+            recipesDeferred.await()
+            greetingDeferred.await()
             onDataSuccess()
         }
     }
@@ -49,6 +59,17 @@ class HomeViewModel(
             },
             ifRight = { success ->
                 _homeRecipes.value = success.data
+            }
+        )
+    }
+
+    private suspend fun greeting() {
+        profileRepository.greet().fold(
+            ifLeft = { error ->
+                 onDataError(error.message)
+            },
+            ifRight = { success ->
+                _greeting.value = success.data
             }
         )
     }

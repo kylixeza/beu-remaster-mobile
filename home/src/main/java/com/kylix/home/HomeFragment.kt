@@ -35,6 +35,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun FragmentHomeBinding.bind() {
+        viewModel.getHomeData()
+
         rvCategory.initLinearHorizontal(requireContext(), categoryAdapter)
         rvHome.initLinearVertical(requireContext(), homeAdapter)
 
@@ -53,6 +55,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.homeRecipes.collect {
                 homeAdapter.submitList(it)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.greeting.collect {
+                binding?.appBarHome?.tvGreeting?.text = it
             }
         }
     }
