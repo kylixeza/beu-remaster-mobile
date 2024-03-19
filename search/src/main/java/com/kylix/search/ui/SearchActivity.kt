@@ -39,7 +39,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
             showSearchView = true,
             searchViewHint = resources.getString(R.string.query_hint),
             onBack = { finish() },
-            onSearch = { viewModel.searchRecipe(it) }
+            onSearch = { viewModel.setQuery(it) }
         )
 
         rvSearch.initLinearVertical(this@SearchActivity, searchAdapter)
@@ -54,7 +54,13 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
         }
 
         viewModel.recipes.observe {
-            searchAdapter.submitList(it)
+            if (it == null) tvNoResult.hide(); searchAdapter.submitList(emptyList())
+            if (it?.isEmpty() == true) tvNoResult.show() else tvNoResult.hide()
+            searchAdapter.submitList(it.orEmpty())
+        }
+
+        viewModel.query.observe {
+            tvNoResult.text = getString(R.string.no_result, it)
         }
     }
 

@@ -27,7 +27,7 @@ fun SecondaryAppBarBinding.bind(
     edtSearch.hint = searchViewHint
 
     scope.lifecycleScope.launch(Dispatchers.Main) {
-        edtSearch.textChanges().debounce(300).collect {
+        edtSearch.textChanges().debounce(500).collect {
             onSearch(it.toString())
         }
     }

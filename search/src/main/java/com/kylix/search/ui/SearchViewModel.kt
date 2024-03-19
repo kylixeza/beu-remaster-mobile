@@ -12,18 +12,21 @@ class SearchViewModel(
     private val recipeRepository: RecipeRepository
 ): BaseViewModel() {
 
-    private val _recipes = MutableStateFlow(emptyList<RecipeList>())
+    private val _recipes = MutableStateFlow<List<RecipeList>?>(null)
     val recipes = _recipes.asStateFlow()
 
-    fun searchRecipe(query: String) {
-        if (query.isEmpty()) {
-            _recipes.value = emptyList()
+    private val _query = MutableStateFlow("")
+    val query = _query.asStateFlow()
+
+    private fun searchRecipe() {
+        if (_query.value.isEmpty()) {
+            _recipes.value = null
             onDataSuccess()
             return
         }
         viewModelScope.launch {
             onDataLoading()
-            recipeRepository.searchRecipes(query).fold(
+            recipeRepository.searchRecipes(_query.value).fold(
                 ifLeft = { onDataError(it.message) },
                 ifRight = {
                     onDataSuccess()
@@ -31,6 +34,11 @@ class SearchViewModel(
                 }
             )
         }
+    }
+
+    fun setQuery(query: String) {
+        _query.value = query
+        searchRecipe()
     }
 
 }
