@@ -63,6 +63,7 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         binding.apply {
             bind()
             constraintValidator()?.apply { validate() }
+            observeState()
         }
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -71,6 +72,10 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
             }
         }
 
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    open fun VB.observeState() {
         lifecycleScope.launch {
             viewModel?.uiState?.collect { uiState ->
                 if (uiState == null) return@collect
@@ -79,8 +84,6 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
                 if (uiState.isSuccess) onDataSuccessLoaded()
             }
         }
-
-        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
     fun <T> StateFlow<T>.observe(block: (T) -> Unit) {

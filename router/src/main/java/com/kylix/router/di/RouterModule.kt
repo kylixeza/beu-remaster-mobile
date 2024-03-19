@@ -14,7 +14,9 @@ import com.kylix.router.navigator.HomeNavigator
 import com.kylix.router.navigator.MainNavigator
 import com.kylix.router.navigator.OnBoardNavigator
 import com.kylix.router.navigator.ReviewNavigator
+import com.kylix.router.navigator.SearchNavigator
 import com.kylix.router.navigator.SplashNavigator
+import com.kylix.search.navigation.SearchNavigation
 import com.kylix.splash.navigation.SplashNavigation
 import org.koin.dsl.module
 
@@ -23,8 +25,9 @@ val routerModule = module {
     single<OnBoardNavigation> { OnBoardNavigator(get()) }
     single<AuthNavigation> { AuthNavigator(get()) }
     single<MainNavigation> { MainNavigator() }
-    single<HomeNavigation> { HomeNavigator(get(), get()) }
+    single<HomeNavigation> { HomeNavigator(get(), get(), get()) }
     single<DetailNavigation> { DetailNavigator(get()) }
     single<ReviewNavigation> { ReviewNavigator() }
     single<CategoryNavigation> { CategoryNavigator(get()) }
+    single<SearchNavigation> { SearchNavigator(get()) }
 }

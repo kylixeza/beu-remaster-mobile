@@ -9,6 +9,7 @@ import com.kylix.common.util.Success
 
 interface RecipeRepository {
     suspend fun getHomeRecipes(): Either<Error, Success<List<HomeRecipe>>>
+    suspend fun searchRecipes(query: String): Either<Error, Success<List<RecipeList>>>
     suspend fun getRecipesByCategory(categoryId: String): Either<Error, Success<List<RecipeList>>>
     suspend fun getRecipeDetail(recipeId: String): Either<Error, Success<RecipeDetail>>
 }

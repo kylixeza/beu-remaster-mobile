@@ -2,7 +2,9 @@ package com.kylix.common.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import com.kylix.common.R
+import com.kylix.common.base.BaseDiffUtil
 import com.kylix.common.base.BaseRecyclerViewAdapter
 import com.kylix.common.databinding.ItemRecipeVerticalBinding
 import com.kylix.common.model.RecipeList
@@ -17,6 +19,13 @@ class RecipeVerticalAdapter(
 ): BaseRecyclerViewAdapter<ItemRecipeVerticalBinding, RecipeList>() {
     override fun inflateViewBinding(parent: ViewGroup): ItemRecipeVerticalBinding {
         return ItemRecipeVerticalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    }
+
+    override fun buildDiffUtilCallback(
+        oldList: List<RecipeList>,
+        newList: List<RecipeList>
+    ): DiffUtil.Callback {
+        return RecipeVerticalDiffCallback(oldList, newList)
     }
 
     override fun ItemRecipeVerticalBinding.bind(item: RecipeList) {
@@ -48,5 +57,15 @@ class RecipeVerticalAdapter(
         tvRating.text = item.rating.toString()
 
         root.setOnClickListener { onItemClicked.invoke(item.recipeId) }
+    }
+
+    inner class RecipeVerticalDiffCallback(
+        private val oldList: List<RecipeList>,
+        private val newList: List<RecipeList>
+    ): BaseDiffUtil<RecipeList, String>(oldList, newList) {
+        override fun RecipeList.getItemIdentifier(): String {
+            return recipeId
+        }
+
     }
 }

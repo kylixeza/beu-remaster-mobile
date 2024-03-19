@@ -1,11 +1,10 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.kylix.common"
+    namespace = "com.kylix.search"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -31,31 +30,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
     buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
-    implementation(Libraries.AndroidX.appCompat)
+
     implementation(Libraries.AndroidX.coreKtx)
     implementation(Libraries.AndroidX.fragmentKtx)
     implementation(Libraries.AndroidX.material)
-    implementation(Libraries.AndroidX.recyclerView)
+    implementation(Libraries.AndroidX.constraintLayout)
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
-
+    implementation(Libraries.CustomUI.sneaker)
     implementation(Libraries.Glide.glide)
-    kapt(Libraries.Glide.compiler)
-
-    implementation(Libraries.Coroutine.coroutinesCore)
-    implementation(Libraries.Coroutine.coroutinesAndroid)
-
-    implementation(Libraries.FlowBinding.flowBindingAndroid)
-    implementation(Libraries.FlowBinding.flowBindingMaterial)
-
-    implementation(Libraries.Retrofit.networkResponseAdapter)
-    implementation(Libraries.Retrofit.retrofitGson)
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
@@ -63,5 +51,6 @@ dependencies {
     implementation(platform(Libraries.Arrow.arrowBOM))
     implementation(Libraries.Arrow.arrowCore)
 
-    implementation(Libraries.CustomUI.snackify)
+    implementation(project(Modules.common))
+    implementation(project(Modules.core))
 }

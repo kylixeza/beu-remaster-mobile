@@ -37,6 +37,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun FragmentHomeBinding.bind() {
         rvCategory.initLinearHorizontal(requireContext(), categoryAdapter)
         rvHome.initLinearVertical(requireContext(), homeAdapter)
+
+        appBarHome.ivSearch.setOnClickListener {
+            homeNavigation.navigateToSearch(requireActivity())
+        }
     }
 
     override fun onDataSuccessLoaded() {

@@ -15,6 +15,7 @@ import com.kylix.comment.ui.CommentFragment
 import com.kylix.common.base.BaseActivity
 import com.kylix.common.util.hide
 import com.kylix.common.util.show
+import com.kylix.common.widget.bind
 import com.kylix.detail.adapter.DetailRecipePageAdapter
 import com.kylix.detail.navigation.DetailNavigation
 import com.kylix.detail.ui.about.AboutFragment
@@ -70,9 +71,6 @@ class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
 
         recipePageAdapter.submitFragments(fragments)
 
-        appBarDetail.ivArrowBack.setOnClickListener { finish() }
-        appBarDetail.ivFavorite.setOnClickListener { viewModel.onFavoriteIconPressed() }
-
         bottomBarDetail.apply {
             btnSeeComments.setOnClickListener {
                 val recipeId = viewModel.getRecipeId(intent)
@@ -84,7 +82,12 @@ class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.recipe.collect {
                 if (it != null) {
-                    appBarDetail.tvTitle.text = it.name
+                    appBarDetail.bind(
+                        title = it.name,
+                        showRightIcon = true,
+                        onLeftIconPressed = { finish() },
+                        onRightIconPressed = { viewModel.onFavoriteIconPressed() }
+                    )
                     bottomBarDetail.tvCommentCount.text = getString(R.string.comments_count, it.commentsCount)
                     initPlayer()
                 }

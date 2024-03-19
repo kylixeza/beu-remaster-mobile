@@ -40,7 +40,7 @@ dependencies {
     implementation(Libraries.AndroidX.appCompat)
     implementation(Libraries.AndroidX.material)
 
-    api(Libraries.Koin.koinCore)
+    implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
     api(project(Modules.splash))
@@ -51,4 +51,5 @@ dependencies {
     api(project(Modules.category))
     api(project(Modules.detail))
     api(project(Modules.review))
+    api(project(Modules.search))
 }

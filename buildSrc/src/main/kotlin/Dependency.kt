@@ -23,6 +23,7 @@ object Modules {
     const val detail = ":detail"
     const val review = ":review"
     const val comment = ":comment"
+    const val search = ":search"
 }
 
 object Libraries {

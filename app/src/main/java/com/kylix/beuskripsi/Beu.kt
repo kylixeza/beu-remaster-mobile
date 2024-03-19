@@ -12,6 +12,7 @@ import com.kylix.home.di.homeModule
 import com.kylix.onboard.di.onBoardModule
 import com.kylix.review.di.reviewModule
 import com.kylix.router.di.routerModule
+import com.kylix.search.di.searchModule
 import com.kylix.splash.di.splashModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -37,7 +38,8 @@ class Beu: Application() {
                 homeModule,
                 detailModule,
                 reviewModule,
-                categoryModule
+                categoryModule,
+                searchModule
             )
         }
     }

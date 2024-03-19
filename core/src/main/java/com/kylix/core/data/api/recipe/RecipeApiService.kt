@@ -10,6 +10,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RecipeApiService {
 
@@ -18,6 +19,11 @@ interface RecipeApiService {
 
     @GET("recipes/home")
     suspend fun getHomeRecipes(): NetworkResponse<BaseResponse<List<HomeRecipeResponse>>, BaseResponse<Unit>>
+
+    @GET("recipes")
+    suspend fun searchRecipes(
+        @Query("query") query: String
+    ): NetworkResponse<BaseResponse<List<RecipeListResponse>>, BaseResponse<Unit>>
 
     @GET("recipes/categories/{categoryId}")
     suspend fun getRecipesByCategory(

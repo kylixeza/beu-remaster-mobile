@@ -1,0 +1,4 @@
+<resources>
+    <string name="query_hint">Cari berdasarkan nama atau bahan</string>
+    <string name="search_title">Pencarian</string>
+</resources>

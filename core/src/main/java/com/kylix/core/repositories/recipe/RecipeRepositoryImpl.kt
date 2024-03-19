@@ -29,6 +29,18 @@ class RecipeRepositoryImpl(
         }.run()
     }
 
+    override suspend fun searchRecipes(query: String): Either<Error, Success<List<RecipeList>>> {
+        return object : NetworkOnlyResource<List<RecipeList>, List<RecipeListResponse>>() {
+            override suspend fun createCall(): NetworkResponse<BaseResponse<List<RecipeListResponse>>, BaseResponse<Unit>> {
+                return api.searchRecipes(query)
+            }
+
+            override fun List<RecipeListResponse>.mapTransform(): List<RecipeList> {
+                return map { it.toRecipeList() }
+            }
+        }.run()
+    }
+
     override suspend fun getRecipesByCategory(categoryId: String): Either<Error, Success<List<RecipeList>>> {
         return object : NetworkOnlyResource<List<RecipeList>, List<RecipeListResponse>>() {
             override suspend fun createCall(): NetworkResponse<BaseResponse<List<RecipeListResponse>>, BaseResponse<Unit>> {
