@@ -36,7 +36,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
-    override fun onDataSuccessLoaded() {
+    override fun FragmentLoginBinding.onDataSuccessLoaded() {
         navigation.navigateToHome(requireActivity())
     }
 

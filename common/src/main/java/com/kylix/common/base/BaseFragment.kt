@@ -17,6 +17,7 @@ import com.kylix.common.util.ScreenOrientation
 import com.kylix.common.util.orZero
 import com.kylix.common.widget.buildLoadingDialog
 import com.kylix.common.widget.errorSnackbar
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,7 +44,7 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
     open fun determineScreenOrientation(): ScreenOrientation { return ScreenOrientation.PORTRAIT }
     open fun onDestroyBehaviour() { }
     open fun onBackPressedBehaviour() { requireActivity().finish() }
-    open fun onDataSuccessLoaded() {}
+    open fun VB.onDataSuccessLoaded() {}
     open fun systemBarColor(): Int? { return null }
 
     override fun onCreateView(
@@ -91,11 +92,17 @@ abstract class BaseFragment<VB: ViewBinding>: Fragment() {
                 if (uiState == null) return@collect
                 if (uiState.isLoading) loadingDialog.show() else loadingDialog.dismiss()
                 if (uiState.isError) binding?.root?.errorSnackbar(uiState.errorMessage)
-                if (uiState.isSuccess) onDataSuccessLoaded()
+                if (uiState.isSuccess) binding?.onDataSuccessLoaded()
             }
         }
 
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, onBackPressedCallback)
+    }
+
+    fun <T> StateFlow<T>.observe(block: (T) -> Unit) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            collect { block(it) }
+        }
     }
 
     override fun onDestroyView() {

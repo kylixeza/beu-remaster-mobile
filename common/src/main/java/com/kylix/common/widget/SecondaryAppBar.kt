@@ -2,6 +2,7 @@ package com.kylix.common.widget
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import com.kylix.common.R
 import com.kylix.common.databinding.SecondaryAppBarBinding
 import com.kylix.common.util.dispose
 import com.kylix.common.util.show
@@ -15,13 +16,21 @@ import reactivecircus.flowbinding.android.widget.textChanges
 fun SecondaryAppBarBinding.bind(
     scope: LifecycleOwner,
     title: String,
+    backgroundColor: Int = R.color.white,
+    titleColor: Int = R.color.black,
+    showBackButton: Boolean = true,
     showSearchView: Boolean = false,
     searchViewHint: String = "",
     onSearch: (query: String) -> Unit = {},
     onBack: () -> Unit = {}
 ) {
+    root.setBackgroundColor(root.context.getColor(backgroundColor))
+
     tvTitle.text = title
+    tvTitle.setTextColor(root.context.getColor(titleColor))
+
     if (showSearchView) tilSearch.show() else tilSearch.dispose()
+    if (showBackButton) ivArrowBack.show() else ivArrowBack.dispose()
     ivArrowBack.setOnClickListener { onBack() }
 
     edtSearch.hint = searchViewHint

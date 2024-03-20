@@ -33,7 +33,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         }
     }
 
-    override fun onDataSuccessLoaded() {
+    override fun FragmentRegisterBinding.onDataSuccessLoaded() {
         navigation.navigateToHome(requireActivity())
     }
 

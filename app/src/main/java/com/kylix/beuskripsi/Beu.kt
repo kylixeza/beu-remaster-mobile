@@ -10,6 +10,7 @@ import com.kylix.core.di.repositoryModule
 import com.kylix.detail.di.detailModule
 import com.kylix.home.di.homeModule
 import com.kylix.onboard.di.onBoardModule
+import com.kylix.profile.di.profileModule
 import com.kylix.review.di.reviewModule
 import com.kylix.router.di.routerModule
 import com.kylix.search.di.searchModule
@@ -39,7 +40,8 @@ class Beu: Application() {
                 detailModule,
                 reviewModule,
                 categoryModule,
-                searchModule
+                searchModule,
+                profileModule
             )
         }
     }

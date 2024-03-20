@@ -45,7 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    override fun onDataSuccessLoaded() {
+    override fun FragmentHomeBinding.onDataSuccessLoaded() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.categories.collect {
                 categoryAdapter.submitList(it)

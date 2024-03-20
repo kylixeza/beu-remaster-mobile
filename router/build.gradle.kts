@@ -52,4 +52,5 @@ dependencies {
     api(project(Modules.detail))
     api(project(Modules.review))
     api(project(Modules.search))
+    api(project(Modules.profile))
 }

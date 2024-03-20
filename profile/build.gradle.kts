@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.kylix.profile"
-    compileSdk = 34
+    compileSdk = App.compileSdk
 
     defaultConfig {
-        minSdk = 21
+        minSdk = App.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -30,13 +30,27 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-
     implementation(Libraries.AndroidX.coreKtx)
     implementation(Libraries.AndroidX.fragmentKtx)
+    implementation(Libraries.AndroidX.constraintLayout)
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
     implementation(Libraries.AndroidX.navigationFragment)
     implementation(Libraries.AndroidX.navigationUI)
+    implementation(Libraries.Glide.glide)
+
+    implementation(Libraries.Koin.koinAndroid)
+    implementation(Libraries.Koin.koinCore)
+
+    implementation(platform(Libraries.Arrow.arrowBOM))
+    implementation(Libraries.Arrow.arrowCore)
+
+    implementation(project(Modules.common))
+    implementation(project(Modules.core))
 }
