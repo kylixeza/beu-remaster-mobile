@@ -45,22 +45,24 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
         rvSearch.initLinearVertical(this@SearchActivity, searchAdapter)
     }
 
-    override fun ActivitySearchBinding.observeState() {
-        viewModel.uiState.observe {
-            if (it == null) return@observe
-            if (it.isLoading) pbSearch.show() else pbSearch.hide()
-            if (it.isLoading) rvSearch.hide() else rvSearch.show()
-            if (it.isError) root.errorSnackbar(it.errorMessage)
-        }
+    override fun observeState() {
+        binding.apply {
+            viewModel.uiState.observe {
+                if (it == null) return@observe
+                if (it.isLoading) pbSearch.show() else pbSearch.hide()
+                if (it.isLoading) rvSearch.hide() else rvSearch.show()
+                if (it.isError) root.errorSnackbar(it.errorMessage)
+            }
 
-        viewModel.recipes.observe {
-            if (it == null) tvNoResult.hide(); searchAdapter.submitList(emptyList())
-            if (it?.isEmpty() == true) tvNoResult.show() else tvNoResult.hide()
-            searchAdapter.submitList(it.orEmpty())
-        }
+            viewModel.recipes.observe {
+                if (it == null) tvNoResult.hide(); searchAdapter.submitList(emptyList())
+                if (it?.isEmpty() == true) tvNoResult.show() else tvNoResult.hide()
+                searchAdapter.submitList(it.orEmpty())
+            }
 
-        viewModel.query.observe {
-            tvNoResult.text = getString(R.string.no_result, it)
+            viewModel.query.observe {
+                tvNoResult.text = getString(R.string.no_result, it)
+            }
         }
     }
 

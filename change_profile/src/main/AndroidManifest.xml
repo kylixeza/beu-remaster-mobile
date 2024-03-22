@@ -4,7 +4,7 @@
     <application
         android:theme="@style/Theme.BeUSkripsi">
         <activity
-            android:name=".ui.AuthActivity"
+            android:name=".ui.ChangeProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.BeUSkripsi"/>
     </application>

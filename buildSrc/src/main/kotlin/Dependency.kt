@@ -24,6 +24,7 @@ object Modules {
     const val review = ":review"
     const val comment = ":comment"
     const val search = ":search"
+    const val changeProfile = ":change_profile"
 }
 
 object Libraries {

@@ -2,20 +2,27 @@ package com.kylix.profile.ui
 
 import android.view.ViewGroup
 import com.kylix.common.base.BaseFragment
-import com.kylix.common.base.BaseViewModel
 import com.kylix.common.util.draw
 import com.kylix.common.util.initLinearVertical
 import com.kylix.common.widget.bind
 import com.kylix.profile.R
 import com.kylix.profile.adapter.SectionAdapter
 import com.kylix.profile.databinding.FragmentProfileBinding
+import com.kylix.profile.model.Setting
+import com.kylix.profile.navigation.ProfileNavigation
+import com.kylix.profile.util.ProfileSetting
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     override val viewModel by viewModel<ProfileViewModel>()
 
-    private val sectionAdapter by lazy { SectionAdapter() }
+    private val profileNavigation by inject<ProfileNavigation>()
+
+    private val sectionAdapter by lazy { SectionAdapter(
+        onItemSelected = { navigateToWhichSettings(it) }
+    ) }
 
     override fun inflateViewBinding(container: ViewGroup?): FragmentProfileBinding {
         return FragmentProfileBinding.inflate(layoutInflater, container, false)
@@ -45,6 +52,23 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         viewModel.profileSection.observe {
             sectionAdapter.submitList(it)
+        }
+    }
+
+    override fun onResume() {
+        viewModel.getUser()
+        super.onResume()
+    }
+
+    private fun navigateToWhichSettings(setting: Setting) {
+        when(setting.setting) {
+            ProfileSetting.CHANGE_PROFILE -> profileNavigation.navigateToChangeProfile(requireActivity())
+            ProfileSetting.CHANGE_PASSWORD -> { }
+            ProfileSetting.HISTORY -> { }
+            ProfileSetting.FAVORITE -> { }
+            ProfileSetting.PRIVACY_POLICY -> { }
+            ProfileSetting.TERMS_AND_CONDITIONS -> { }
+            ProfileSetting.HELP -> { }
         }
     }
 

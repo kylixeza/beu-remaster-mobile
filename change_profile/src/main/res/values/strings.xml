@@ -1,0 +1,7 @@
+<resources>
+    <string name="username">Username</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="phone_number">Nomor Telepon</string>
+    <string name="email">Email</string>
+    <string name="change_profile">Ubah Profil</string>
+</resources>

@@ -6,7 +6,9 @@ import com.kylix.common.base.BaseRecyclerViewAdapter
 import com.kylix.profile.databinding.ItemSettingBinding
 import com.kylix.profile.model.Setting
 
-class SettingsAdapter: BaseRecyclerViewAdapter<ItemSettingBinding, Setting>() {
+class SettingsAdapter(
+    private val onItemSelected: (Setting) -> Unit
+): BaseRecyclerViewAdapter<ItemSettingBinding, Setting>() {
     override fun inflateViewBinding(parent: ViewGroup): ItemSettingBinding {
         return ItemSettingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     }
@@ -14,7 +16,8 @@ class SettingsAdapter: BaseRecyclerViewAdapter<ItemSettingBinding, Setting>() {
     override fun ItemSettingBinding.bind(item: Setting) {
         ivIcon.setImageResource(item.icon)
         tvTitle.text = item.name
-
-
+        root.setOnClickListener {
+            onItemSelected(item)
+        }
     }
 }

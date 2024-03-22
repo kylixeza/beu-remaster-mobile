@@ -3,6 +3,7 @@ package com.kylix.common.util
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
@@ -45,6 +46,17 @@ fun ImageView.draw(
 ) {
     Glide.with(context)
         .load(bitmap)
+        .requestBuilder()
+        .into(this)
+}
+
+fun ImageView.draw(
+    context: Context,
+    uri: Uri,
+    requestBuilder: RequestBuilder<Drawable>.() -> RequestBuilder<Drawable> = { this }
+) {
+    Glide.with(context)
+        .load(uri)
         .requestBuilder()
         .into(this)
 }

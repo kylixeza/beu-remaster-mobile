@@ -75,7 +75,7 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 
-    open fun VB.observeState() {
+    open fun observeState() {
         lifecycleScope.launch {
             viewModel?.uiState?.collect { uiState ->
                 if (uiState == null) return@collect

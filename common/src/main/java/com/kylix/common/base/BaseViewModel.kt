@@ -6,11 +6,15 @@ import kotlinx.coroutines.flow.asStateFlow
 
 abstract class BaseViewModel: ViewModel() {
 
-    private val _uiState = MutableStateFlow<BaseUIState?>(null)
+    open val _uiState = MutableStateFlow<BaseUIState?>(null)
     val uiState = _uiState.asStateFlow()
 
     protected fun onDataLoading() {
         _uiState.value = BaseUIState(isLoading = true)
+    }
+
+    protected fun onFinishLoading() {
+        _uiState.value = BaseUIState(isLoading = false)
     }
 
     protected fun onDataError(message: String) {

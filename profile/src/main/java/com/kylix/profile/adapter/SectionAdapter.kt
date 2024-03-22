@@ -6,8 +6,11 @@ import com.kylix.common.base.BaseRecyclerViewAdapter
 import com.kylix.common.util.initLinearVertical
 import com.kylix.profile.databinding.ItemSectionBinding
 import com.kylix.profile.model.ProfileSection
+import com.kylix.profile.model.Setting
 
-class SectionAdapter: BaseRecyclerViewAdapter<ItemSectionBinding, ProfileSection>() {
+class SectionAdapter(
+    private val onItemSelected: (Setting) -> Unit
+): BaseRecyclerViewAdapter<ItemSectionBinding, ProfileSection>() {
     override fun inflateViewBinding(parent: ViewGroup): ItemSectionBinding {
         return ItemSectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     }
@@ -15,7 +18,9 @@ class SectionAdapter: BaseRecyclerViewAdapter<ItemSectionBinding, ProfileSection
     override fun ItemSectionBinding.bind(item: ProfileSection) {
         tvSectionName.text = item.sectionName
 
-        val settingsAdapter = SettingsAdapter()
+        val settingsAdapter = SettingsAdapter(
+            onItemSelected = onItemSelected
+        )
         rvSettings.initLinearVertical(root.context, settingsAdapter)
         settingsAdapter.submitList(item.settings)
     }

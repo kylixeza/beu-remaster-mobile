@@ -19,6 +19,7 @@ fun SecondaryAppBarBinding.bind(
     backgroundColor: Int = R.color.white,
     titleColor: Int = R.color.black,
     showBackButton: Boolean = true,
+    backButtonColor: Int = R.color.black,
     showSearchView: Boolean = false,
     searchViewHint: String = "",
     onSearch: (query: String) -> Unit = {},
@@ -32,6 +33,7 @@ fun SecondaryAppBarBinding.bind(
     if (showSearchView) tilSearch.show() else tilSearch.dispose()
     if (showBackButton) ivArrowBack.show() else ivArrowBack.dispose()
     ivArrowBack.setOnClickListener { onBack() }
+    ivArrowBack.imageTintList = root.context.getColorStateList(backButtonColor)
 
     edtSearch.hint = searchViewHint
 
