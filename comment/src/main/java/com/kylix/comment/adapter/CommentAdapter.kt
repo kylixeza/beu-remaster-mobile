@@ -34,7 +34,10 @@ class CommentAdapter(
     override fun ItemCommentBinding.bindWithPosition(item: Comment, position: Int) {
         expandableItems[position] = false
 
-        ivAvatar.draw(root.context, item.avatar) { placeholder(com.kylix.common.R.drawable.ilu_default_profile_picture) }
+        ivAvatar.draw(root.context, item.avatar) {
+            placeholder(com.kylix.common.R.drawable.ilu_default_profile_picture)
+                .circleCrop()
+        }
         tvUsername.text = item.username
         tvComment.text = item.comment
         tvTime.text = item.time

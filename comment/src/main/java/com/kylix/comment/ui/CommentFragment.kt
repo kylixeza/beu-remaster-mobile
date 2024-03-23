@@ -40,7 +40,7 @@ class CommentFragment : BaseBottomSheetDialogFragment<FragmentCommentBinding>() 
             initLinearVertical(requireContext(), commentAdapter)
 
             val screenHeightDp = (resources.configuration.screenHeightDp * resources.displayMetrics.density).toInt()
-            val heightScale = 0.5
+            val heightScale = 0.55
             layoutParams.apply {
                 height = (screenHeightDp * heightScale).toInt()
             }

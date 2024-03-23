@@ -23,7 +23,10 @@ class ReplyCommentAdapter: BaseRecyclerViewAdapter<ItemReplyCommentBinding, Repl
     }
 
     override fun ItemReplyCommentBinding.bindWithPosition(item: ReplyComment, position: Int) {
-        ivAvatar.draw(root.context, item.avatar) { placeholder(com.kylix.common.R.drawable.ilu_default_profile_picture) }
+        ivAvatar.draw(root.context, item.avatar) {
+            placeholder(com.kylix.common.R.drawable.ilu_default_profile_picture)
+                .circleCrop()
+        }
         tvUsername.text = item.username
         tvComment.text = item.comment
         tvTime.text = item.time
