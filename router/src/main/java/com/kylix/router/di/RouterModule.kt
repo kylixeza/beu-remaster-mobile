@@ -5,6 +5,7 @@ import com.kylix.category.navigation.CategoryNavigation
 import com.kylix.reset_password.navigation.ResetPasswordNavigation
 import com.kylix.change_profile.navigation.ChangeProfileNavigation
 import com.kylix.detail.navigation.DetailNavigation
+import com.kylix.favorite.navigation.FavoriteNavigation
 import com.kylix.home.navigation.HomeNavigation
 import com.kylix.main.navigation.MainNavigation
 import com.kylix.onboard.navigation.OnBoardNavigation
@@ -15,6 +16,7 @@ import com.kylix.router.navigator.CategoryNavigator
 import com.kylix.router.navigator.ResetPasswordNavigator
 import com.kylix.router.navigator.ChangeProfileNavigator
 import com.kylix.router.navigator.DetailNavigator
+import com.kylix.router.navigator.FavoriteNavigator
 import com.kylix.router.navigator.HomeNavigator
 import com.kylix.router.navigator.MainNavigator
 import com.kylix.router.navigator.OnBoardNavigator
@@ -36,7 +38,8 @@ val routerModule = module {
     single<ReviewNavigation> { ReviewNavigator() }
     single<CategoryNavigation> { CategoryNavigator(get()) }
     single<SearchNavigation> { SearchNavigator(get()) }
-    single<ProfileNavigation> { ProfileNavigator(get(), get()) }
+    single<ProfileNavigation> { ProfileNavigator(get(), get(), get()) }
     single<ChangeProfileNavigation> { ChangeProfileNavigator() }
     single<ResetPasswordNavigation> { ResetPasswordNavigator() }
+    single<FavoriteNavigation> { FavoriteNavigator(get()) }
 }

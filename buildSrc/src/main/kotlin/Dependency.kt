@@ -26,6 +26,7 @@ object Modules {
     const val search = ":search"
     const val changeProfile = ":change_profile"
     const val reset_password = ":reset_password"
+    const val favorite = ":favorite"
 }
 
 object Libraries {

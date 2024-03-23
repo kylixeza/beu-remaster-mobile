@@ -6,6 +6,7 @@ data class RecipeList(
     val difficulty: String,
     val image: String,
     val favorites: Long,
+    val isFavorite: Boolean,
     val rating: Double,
     val estimationTime: Int,
 )

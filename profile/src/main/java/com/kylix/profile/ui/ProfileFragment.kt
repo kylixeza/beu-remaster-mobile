@@ -65,7 +65,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             ProfileSetting.CHANGE_PROFILE -> profileNavigation.navigateToChangeProfile(requireActivity())
             ProfileSetting.CHANGE_PASSWORD -> profileNavigation.navigateToChangePassword(requireActivity())
             ProfileSetting.HISTORY -> { }
-            ProfileSetting.FAVORITE -> { }
+            ProfileSetting.FAVORITE -> profileNavigation.navigateToFavorite(requireActivity())
             ProfileSetting.PRIVACY_POLICY -> { }
             ProfileSetting.TERMS_AND_CONDITIONS -> { }
             ProfileSetting.HELP -> { }

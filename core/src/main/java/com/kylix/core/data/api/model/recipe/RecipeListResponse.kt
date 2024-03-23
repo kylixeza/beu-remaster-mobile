@@ -11,6 +11,7 @@ data class RecipeListResponse(
     val difficulty: String,
     val image: String,
     val favorites: Long,
+    val isFavorite: Boolean,
     val rating: Double,
     @field:SerializedName("estimation_time")
     val estimationTime: Int,
@@ -21,6 +22,7 @@ data class RecipeListResponse(
         difficulty = difficulty,
         image = image,
         favorites = favorites,
+        isFavorite = isFavorite,
         rating = rating,
         estimationTime = estimationTime
     )

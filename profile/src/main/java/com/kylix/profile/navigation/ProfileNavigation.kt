@@ -6,4 +6,5 @@ abstract class ProfileNavigation {
 
     abstract fun navigateToChangeProfile(activity: Activity)
     abstract fun navigateToChangePassword(activity: Activity)
+    abstract fun navigateToFavorite(activity: Activity)
 }
