@@ -9,6 +9,7 @@ import com.kylix.common.util.Error
 import com.kylix.common.util.Success
 import com.kylix.core.data.api.model.review.ReviewRequest
 import com.kylix.core.data.api.review.ReviewApiService
+import com.kylix.core.util.toRequestBody
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -37,14 +38,6 @@ class ReviewRepositoryImpl(
            }
 
        }.run()
-    }
-
-    private fun Bitmap.toRequestBody(): MultipartBody.Part {
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-        val byteArray = byteArrayOutputStream.toByteArray()
-        val requestBody = byteArray.toRequestBody("image/jpeg".toMediaTypeOrNull())
-        return MultipartBody.Part.createFormData("image", "image.jpg", requestBody)
     }
 
 }

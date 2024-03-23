@@ -1,9 +1,7 @@
 package com.kylix.core.repositories.profile
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.net.Uri
-import android.webkit.MimeTypeMap
 import arrow.core.Either
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.kylix.common.base.BaseResponse
@@ -11,19 +9,11 @@ import com.kylix.common.base.NetworkOnlyResource
 import com.kylix.common.model.User
 import com.kylix.common.util.Error
 import com.kylix.common.util.Success
+import com.kylix.core.data.api.model.user.PasswordRequest
 import com.kylix.core.data.api.model.user.UserRequest
 import com.kylix.core.data.api.model.user.UserResponse
 import com.kylix.core.data.api.profile.ProfileApiService
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileNotFoundException
-import java.io.InputStream
+import com.kylix.core.util.toMultipartBodyPart
 
 class ProfileRepositoryImpl(
     private val profileApiService: ProfileApiService
@@ -78,30 +68,16 @@ class ProfileRepositoryImpl(
         }.run()
     }
 
-    private fun Uri.toMultipartBodyPart(context: Context): MultipartBody.Part? {
-        try {
-            val inputStream: InputStream? = context.contentResolver.openInputStream(this)
-            inputStream?.let {
-                val file = File(context.cacheDir, "temp_image_file")
-                inputStream.use { input ->
-                    file.outputStream().use { output ->
-                        input.copyTo(output)
-                    }
-                }
-
-                val requestFile = file.asRequestBody(getMediaType(context))
-                return MultipartBody.Part.createFormData("image", file.name, requestFile)
+    override suspend fun resetPassword(newPassword: String): Either<Error, Success<Unit>> {
+        return object : NetworkOnlyResource<Unit, String>() {
+            override suspend fun createCall(): NetworkResponse<BaseResponse<String>, BaseResponse<Unit>> {
+                val body = PasswordRequest(newPassword)
+                return profileApiService.resetPassword(body)
             }
-        } catch (e: FileNotFoundException) {
-            e.printStackTrace()
-        }
-        return null
-    }
 
-    private fun Uri.getMediaType(context: Context): MediaType {
-        MimeTypeMap.getSingleton()
-        val mimeType = context.contentResolver.getType(this)
-        return mimeType?.toMediaTypeOrNull() ?: "image/jpeg".toMediaTypeOrNull()
-        ?: throw IllegalArgumentException("Unsupported media type")
+            override fun String.mapTransform() {
+                return
+            }
+        }.run()
     }
 }

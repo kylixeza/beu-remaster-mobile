@@ -30,33 +30,11 @@ fun ImageView.draw(drawable: Int) = setImageResource(drawable)
 
 fun ImageView.draw(
     context: Context,
-    url: String,
+    data: Any,
     requestBuilder: RequestBuilder<Drawable>.() -> RequestBuilder<Drawable> = { this }
 ) {
     Glide.with(context)
-        .load(url)
-        .requestBuilder()
-        .into(this)
-}
-
-fun ImageView.draw(
-    context: Context,
-    bitmap: Bitmap,
-    requestBuilder: RequestBuilder<Drawable>.() -> RequestBuilder<Drawable> = { this }
-) {
-    Glide.with(context)
-        .load(bitmap)
-        .requestBuilder()
-        .into(this)
-}
-
-fun ImageView.draw(
-    context: Context,
-    uri: Uri,
-    requestBuilder: RequestBuilder<Drawable>.() -> RequestBuilder<Drawable> = { this }
-) {
-    Glide.with(context)
-        .load(uri)
+        .load(data)
         .requestBuilder()
         .into(this)
 }

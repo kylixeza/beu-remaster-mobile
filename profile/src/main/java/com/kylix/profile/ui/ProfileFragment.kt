@@ -63,7 +63,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private fun navigateToWhichSettings(setting: Setting) {
         when(setting.setting) {
             ProfileSetting.CHANGE_PROFILE -> profileNavigation.navigateToChangeProfile(requireActivity())
-            ProfileSetting.CHANGE_PASSWORD -> { }
+            ProfileSetting.CHANGE_PASSWORD -> profileNavigation.navigateToChangePassword(requireActivity())
             ProfileSetting.HISTORY -> { }
             ProfileSetting.FAVORITE -> { }
             ProfileSetting.PRIVACY_POLICY -> { }

@@ -20,4 +20,8 @@ interface ProfileRepository {
         phoneNumber: String,
         avatar: Uri?
     ): Either<Error, Success<User>>
+
+    suspend fun resetPassword(
+        newPassword: String,
+    ): Either<Error, Success<Unit>>
 }

@@ -25,6 +25,7 @@ object Modules {
     const val comment = ":comment"
     const val search = ":search"
     const val changeProfile = ":change_profile"
+    const val reset_password = ":reset_password"
 }
 
 object Libraries {

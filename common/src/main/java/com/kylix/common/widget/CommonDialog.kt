@@ -48,8 +48,8 @@ fun Context.buildSuccessDialog(
         tvTitle.text = title
         tvMessage.text = message
         btnClose.setOnClickListener {
-            onDismiss()
             dismiss()
+            onDismiss()
         }
     }
 }

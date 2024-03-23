@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    app:cardCornerRadius="12dp"
+    app:cardCornerRadius="24dp"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:background="@color/success_900">
@@ -13,7 +13,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="24dp"
         android:orientation="vertical">
 
         <ImageView
@@ -46,11 +47,11 @@
             android:fontFamily="@font/poppins"
             tools:text="Anda berhasil login!"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_close"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_marginTop="24dp"
             android:textSize="16sp"
             android:textColor="@color/white"
@@ -58,6 +59,7 @@
             android:textAllCaps="false"
             app:strokeColor="@color/white"
             app:strokeWidth="2dp"
+            app:cornerRadius="8dp"
             tools:text="Tutup"/>
 
     </LinearLayout>
