@@ -2,8 +2,6 @@ package com.kylix.search.ui
 
 import com.kylix.common.adapter.RecipeVerticalAdapter
 import com.kylix.common.base.BaseActivity
-import com.kylix.common.base.BaseViewModel
-import com.kylix.common.util.dispose
 import com.kylix.common.util.hide
 import com.kylix.common.util.initLinearVertical
 import com.kylix.common.util.show
@@ -23,7 +21,6 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
 
     private val searchAdapter by lazy {
         RecipeVerticalAdapter(
-            isFavoriteVisible = true,
             onItemClicked = { searchNavigation.navigateToDetail(this, it) },
         )
     }
@@ -36,6 +33,9 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
         searchAppBar.bind(
             this@SearchActivity,
             title = getString(R.string.search_title),
+            backgroundColor = com.kylix.common.R.color.primary_700,
+            titleColor = com.kylix.common.R.color.white,
+            backButtonColor = com.kylix.common.R.color.white,
             showSearchView = true,
             searchViewHint = resources.getString(R.string.query_hint),
             onBack = { finish() },
