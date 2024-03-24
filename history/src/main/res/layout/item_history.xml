@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp">
+
+    <ImageView
+        android:id="@+id/iv_food"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_food_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_semibold"
+        android:maxLines="1"
+        android:textColor="@color/neutral_900"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_food"
+        app:layout_constraintTop_toTopOf="@id/iv_food"
+        tools:text="Fried Rice" />
+
+    <TextView
+        android:id="@+id/tv_timestamp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins"
+        android:maxLines="1"
+        android:textColor="@color/neutral_500"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_food_name"
+        app:layout_constraintStart_toStartOf="@id/tv_food_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_food_name"
+        tools:text="12 November 2023, 16:15" />
+
+    <ImageView
+        android:id="@+id/iv_time_spent"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="6dp"
+        android:src="@drawable/ic_timespent"
+        app:layout_constraintStart_toStartOf="@id/tv_timestamp"
+        app:layout_constraintTop_toBottomOf="@id/tv_timestamp" />
+
+    <TextView
+        android:id="@+id/tv_time_spent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/secondary_500"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_time_spent"
+        app:layout_constraintStart_toEndOf="@id/iv_time_spent"
+        app:layout_constraintTop_toTopOf="@id/iv_time_spent"
+        tools:text="10 minutes" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_is_reviewed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="6dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_food"
+        app:layout_constraintStart_toStartOf="@id/iv_time_spent"
+        tools:backgroundTint="@color/success_50">
+
+        <TextView
+            android:id="@+id/tv_is_reviewed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textSize="8sp"
+            tools:text="Mudah"
+            tools:textColor="@color/success_900" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <include
+        android:id="@+id/cv_review"
+        layout="@layout/include_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintTop_toBottomOf="@id/cv_is_reviewed" />
+
+    <View
+        android:id="@+id/v_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/neutral_400"
+        app:layout_constraintTop_toBottomOf="@id/cv_review" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kylix.favorite"
+    namespace = "com.kylix.history"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -30,6 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         viewBinding = true
     }
@@ -53,4 +54,7 @@ dependencies {
 
     implementation(project(Modules.common))
     implementation(project(Modules.core))
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }

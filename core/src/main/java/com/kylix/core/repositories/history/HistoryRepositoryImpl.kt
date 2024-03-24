@@ -4,10 +4,12 @@ import arrow.core.Either
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.kylix.common.base.BaseResponse
 import com.kylix.common.base.NetworkOnlyResource
+import com.kylix.common.model.History
 import com.kylix.common.util.Success
 import com.kylix.common.util.Error
 import com.kylix.core.data.api.history.HistoryApiService
 import com.kylix.core.data.api.model.history.HistoryRequest
+import com.kylix.core.data.api.model.history.HistoryResponse
 
 class HistoryRepositoryImpl(
     private val historyApiService: HistoryApiService
@@ -26,6 +28,18 @@ class HistoryRepositoryImpl(
                 return this
             }
 
+        }.run()
+    }
+
+    override suspend fun getHistories(): Either<Error, Success<List<History>>> {
+        return object : NetworkOnlyResource<List<History>, List<HistoryResponse>>() {
+            override suspend fun createCall(): NetworkResponse<BaseResponse<List<HistoryResponse>>, BaseResponse<Unit>> {
+                return historyApiService.getHistories()
+            }
+
+            override fun List<HistoryResponse>.mapTransform(): List<History> {
+                return map { it.toHistory() }
+            }
         }.run()
     }
 }

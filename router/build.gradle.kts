@@ -54,4 +54,5 @@ dependencies {
     api(project(Modules.changeProfile))
     api(project(Modules.reset_password))
     api(project(Modules.favorite))
+    api(project(Modules.history))
 }

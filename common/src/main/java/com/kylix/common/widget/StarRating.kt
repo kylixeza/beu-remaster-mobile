@@ -5,6 +5,25 @@ import androidx.core.content.ContextCompat
 import com.kylix.common.R
 import com.kylix.common.databinding.IncludeStarsRatingBinding
 
+fun IncludeStarsRatingBinding.reset(
+    context: Context
+) {
+    val stars = listOf(
+        ivStar1,
+        ivStar2,
+        ivStar3,
+        ivStar4,
+        ivStar5
+    )
+
+    stars.forEach {
+        it.setImageDrawable(
+            ContextCompat.getDrawable(context, R.drawable.ic_unstar)
+                ?.constantState?.newDrawable()?.constantState?.newDrawable()
+        )
+    }
+}
+
 fun IncludeStarsRatingBinding.bind(
     context: Context,
     defaultStars: Int = 0,

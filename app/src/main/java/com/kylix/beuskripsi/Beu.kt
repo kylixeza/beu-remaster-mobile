@@ -11,6 +11,7 @@ import com.kylix.core.di.networkModule
 import com.kylix.core.di.repositoryModule
 import com.kylix.detail.di.detailModule
 import com.kylix.favorite.di.favoriteModule
+import com.kylix.history.di.historyModule
 import com.kylix.home.di.homeModule
 import com.kylix.onboard.di.onBoardModule
 import com.kylix.profile.di.profileModule
@@ -47,7 +48,8 @@ class Beu: Application() {
                 profileModule,
                 changeProfileModule,
                 resetPasswordModule,
-                favoriteModule
+                favoriteModule,
+                historyModule
             )
         }
     }

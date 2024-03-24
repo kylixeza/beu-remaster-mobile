@@ -9,6 +9,7 @@ class DetailNavigator(
 ): DetailNavigation() {
     override fun navigateToReview(historyId: String, activity: Activity) {
         reviewNavigation.navigateItSelf(historyId, activity)
+        activity.finish()
     }
 
 }
