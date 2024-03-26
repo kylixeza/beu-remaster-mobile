@@ -6,6 +6,7 @@ import com.kylix.common.widget.bind
 import com.kylix.history.adapter.HistoryAdapter
 import com.kylix.history.databinding.ActivityHistoryBinding
 import com.kylix.history.navigation.HistoryNavigation
+import com.kylix.history.ui.review_preview.ReviewPreviewFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,7 +33,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>() {
         rvHistory.initLinearVertical(this@HistoryActivity, historyAdapter)
     }
 
-    override fun systemBarColor(): Int? {
+    override fun systemBarColor(): Int {
         return com.kylix.common.R.color.primary_700
     }
 
@@ -48,7 +49,8 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>() {
         if (!isReviewed) {
             historyNavigation.navigateToReview(this, historyId)
         } else {
-            // Do something
+            val reviewFragment = ReviewPreviewFragment.newInstance(historyId)
+            reviewFragment.show(supportFragmentManager, ReviewPreviewFragment::class.java.simpleName)
         }
     }
 }

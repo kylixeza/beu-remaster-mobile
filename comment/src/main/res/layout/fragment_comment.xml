@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:scaleX=".5"
         android:scaleY=".5"
-        android:src="@drawable/ic_comment_pointer"
+        android:src="@drawable/ic_bottom_sheet_pointer"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.appbar.AppBarLayout

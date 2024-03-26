@@ -46,6 +46,8 @@ dependencies {
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
     implementation(Libraries.Glide.glide)
 
+    implementation(Libraries.Flexbox.flexbox)
+
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
@@ -54,7 +56,4 @@ dependencies {
 
     implementation(project(Modules.common))
     implementation(project(Modules.core))
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }

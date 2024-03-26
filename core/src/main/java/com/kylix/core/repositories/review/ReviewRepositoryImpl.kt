@@ -5,9 +5,11 @@ import arrow.core.Either
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.kylix.common.base.BaseResponse
 import com.kylix.common.base.NetworkOnlyResource
+import com.kylix.common.model.Review
 import com.kylix.common.util.Error
 import com.kylix.common.util.Success
 import com.kylix.core.data.api.model.review.ReviewRequest
+import com.kylix.core.data.api.model.review.ReviewResponse
 import com.kylix.core.data.api.review.ReviewApiService
 import com.kylix.core.util.toRequestBody
 import okhttp3.MediaType
@@ -40,4 +42,15 @@ class ReviewRepositoryImpl(
        }.run()
     }
 
+    override suspend fun getReview(historyId: String): Either<Error, Success<Review>> {
+        return object : NetworkOnlyResource<Review, ReviewResponse>() {
+            override suspend fun createCall(): NetworkResponse<BaseResponse<ReviewResponse>, BaseResponse<Unit>> {
+                return reviewApiService.getReview(historyId)
+            }
+
+            override fun ReviewResponse.mapTransform(): Review {
+                return this.toReview()
+            }
+        }.run()
+    }
 }
