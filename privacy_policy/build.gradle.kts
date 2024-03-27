@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kylix.change_password"
+    namespace = "com.kylix.privacy_policy"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -30,9 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -42,17 +39,9 @@ dependencies {
     implementation(Libraries.AndroidX.fragmentKtx)
     implementation(Libraries.AndroidX.material)
     implementation(Libraries.AndroidX.constraintLayout)
-    implementation(Libraries.AndroidX.lifecycleViewModelKtx)
-    implementation(Libraries.Glide.glide)
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
-
-    implementation(Libraries.FlowBinding.flowBindingAndroid)
-    implementation(Libraries.FlowBinding.flowBindingMaterial)
-
-    implementation(platform(Libraries.Arrow.arrowBOM))
-    implementation(Libraries.Arrow.arrowCore)
 
     implementation(project(Modules.common))
     implementation(project(Modules.core))
