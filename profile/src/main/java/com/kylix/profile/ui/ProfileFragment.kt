@@ -68,7 +68,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             ProfileSetting.FAVORITE -> profileNavigation.navigateToFavorite(requireActivity())
             ProfileSetting.PRIVACY_POLICY -> profileNavigation.navigateToPrivacyPolicy(requireActivity())
             ProfileSetting.TERMS_AND_CONDITIONS -> profileNavigation.navigateToTermsAndConditions(requireActivity())
-            ProfileSetting.HELP -> { }
+            ProfileSetting.HELP -> profileNavigation.navigateToHelpCenter(requireActivity())
         }
     }
 

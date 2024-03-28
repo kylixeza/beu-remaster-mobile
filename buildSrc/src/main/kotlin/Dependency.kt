@@ -28,6 +28,7 @@ object Modules {
     const val reset_password = ":reset_password"
     const val favorite = ":favorite"
     const val history = ":history"
+    const val helpCenter = ":help_center"
 }
 
 object Libraries {

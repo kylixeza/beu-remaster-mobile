@@ -21,4 +21,5 @@ abstract class ProfileNavigation {
     abstract fun navigateToResetPassword(activity: Activity)
     abstract fun navigateToHistory(activity: Activity)
     abstract fun navigateToFavorite(activity: Activity)
+    abstract fun navigateToHelpCenter(activity: Activity)
 }

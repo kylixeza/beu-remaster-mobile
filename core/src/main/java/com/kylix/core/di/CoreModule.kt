@@ -7,6 +7,7 @@ import com.kylix.core.data.api.auth.AuthApiService
 import com.kylix.core.data.api.auth.TokenInterceptor
 import com.kylix.core.data.api.comment.CommentApiService
 import com.kylix.core.data.api.favorite.FavoriteApiService
+import com.kylix.core.data.api.help_center.HelpCenterApiService
 import com.kylix.core.data.api.history.HistoryApiService
 import com.kylix.core.data.api.profile.ProfileApiService
 import com.kylix.core.data.api.recipe.RecipeApiService
@@ -21,6 +22,8 @@ import com.kylix.core.repositories.comment.CommentRepository
 import com.kylix.core.repositories.comment.CommentRepositoryImpl
 import com.kylix.core.repositories.favorite.FavoriteRepository
 import com.kylix.core.repositories.favorite.FavoriteRepositoryImpl
+import com.kylix.core.repositories.help_center.HelpCenterRepository
+import com.kylix.core.repositories.help_center.HelpCenterRepositoryImpl
 import com.kylix.core.repositories.history.HistoryRepository
 import com.kylix.core.repositories.history.HistoryRepositoryImpl
 import com.kylix.core.repositories.profile.ProfileRepository
@@ -90,33 +93,14 @@ val networkModule = module {
             .build()
     }
 
-    single {
-        get<Retrofit>().create(AuthApiService::class.java)
-    }
-
-    single {
-        get<Retrofit>().create(RecipeApiService::class.java)
-    }
-
-    single {
-        get<Retrofit>().create(FavoriteApiService::class.java)
-    }
-
-    single {
-        get<Retrofit>().create(ReviewApiService::class.java)
-    }
-
-    single {
-        get<Retrofit>().create(HistoryApiService::class.java)
-    }
-
-    single {
-        get<Retrofit>().create(CommentApiService::class.java)
-    }
-
-    single {
-        get<Retrofit>().create(ProfileApiService::class.java)
-    }
+    single { get<Retrofit>().create(AuthApiService::class.java) }
+    single { get<Retrofit>().create(RecipeApiService::class.java) }
+    single { get<Retrofit>().create(FavoriteApiService::class.java) }
+    single { get<Retrofit>().create(ReviewApiService::class.java) }
+    single { get<Retrofit>().create(HistoryApiService::class.java) }
+    single { get<Retrofit>().create(CommentApiService::class.java) }
+    single { get<Retrofit>().create(ProfileApiService::class.java) }
+    single { get<Retrofit>().create(HelpCenterApiService::class.java) }
 }
 
 val repositoryModule = module {
@@ -128,4 +112,5 @@ val repositoryModule = module {
     single<HistoryRepository> { HistoryRepositoryImpl(get()) }
     single<CommentRepository> { CommentRepositoryImpl(get()) }
     single<ProfileRepository> { ProfileRepositoryImpl(get()) }
+    single<HelpCenterRepository> { HelpCenterRepositoryImpl(get()) }
 }

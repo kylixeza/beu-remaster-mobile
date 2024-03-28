@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kylix.router"
+    namespace = "com.kylix.help_center"
     compileSdk = App.compileSdk
 
     defaultConfig {
@@ -30,30 +30,29 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
 
-    implementation(Libraries.AndroidX.coreKtx)
     implementation(Libraries.AndroidX.appCompat)
+    implementation(Libraries.AndroidX.coreKtx)
+    implementation(Libraries.AndroidX.fragmentKtx)
     implementation(Libraries.AndroidX.material)
+    implementation(Libraries.AndroidX.constraintLayout)
+    implementation(Libraries.AndroidX.lifecycleViewModelKtx)
+
+    implementation(Libraries.FlowBinding.flowBindingAndroid)
+    implementation(Libraries.FlowBinding.flowBindingMaterial)
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 
-    api(project(Modules.splash))
-    api(project(Modules.onboard))
-    api(project(Modules.auth))
-    api(project(Modules.main))
-    api(project(Modules.home))
-    api(project(Modules.category))
-    api(project(Modules.detail))
-    api(project(Modules.review))
-    api(project(Modules.search))
-    api(project(Modules.profile))
-    api(project(Modules.changeProfile))
-    api(project(Modules.reset_password))
-    api(project(Modules.favorite))
-    api(project(Modules.history))
-    api(project(Modules.helpCenter))
+    implementation(platform(Libraries.Arrow.arrowBOM))
+    implementation(Libraries.Arrow.arrowCore)
+
+    implementation(project(Modules.common))
+    implementation(project(Modules.core))
 }
