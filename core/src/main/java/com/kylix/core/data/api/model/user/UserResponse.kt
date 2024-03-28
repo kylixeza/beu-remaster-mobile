@@ -9,7 +9,7 @@ data class UserResponse(
     val avatar: String,
     @field:SerializedName("phone_number")
     val phoneNumber: String,
-    val email: String
+    val email: String?
 ) {
     fun toUser() = User(
         username = username,

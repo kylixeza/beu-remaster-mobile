@@ -7,7 +7,6 @@ import com.kylix.common.util.Success
 interface AuthRepository {
 
     suspend fun register(
-        email: String,
         password: String,
         username: String,
         phoneNumber: String,

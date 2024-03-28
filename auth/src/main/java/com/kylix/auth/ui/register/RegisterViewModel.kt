@@ -9,11 +9,10 @@ class RegisterViewModel(
     private val authRepository: AuthRepository
 ): BaseViewModel() {
 
-    fun register(email: String, password: String, username: String, phone: String, name: String) {
+    fun register(password: String, username: String, phone: String, name: String) {
         viewModelScope.launch {
             onDataLoading()
             authRepository.register(
-                email = email,
                 password = password,
                 username = username,
                 phoneNumber = phone,

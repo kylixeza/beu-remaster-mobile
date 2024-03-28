@@ -18,7 +18,6 @@ class AuthRepositoryImpl(
 ): AuthRepository {
 
     override suspend fun register(
-        email: String,
         password: String,
         username: String,
         phoneNumber: String,
@@ -27,7 +26,6 @@ class AuthRepositoryImpl(
         return object : NetworkBoundRequest<TokenResponse>() {
             override suspend fun createCall(): NetworkResponse<BaseResponse<TokenResponse>, BaseResponse<Unit>> {
                 val body = RegisterRequest(
-                    email = email,
                     password = password,
                     username = username,
                     phoneNumber = phoneNumber,

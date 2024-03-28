@@ -24,7 +24,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
         btnRegister.setOnClickListener {
             viewModel.register(
-                edtEmail.text.toString(),
                 edtPassword.text.toString(),
                 edtUsername.text.toString(),
                 edtPhoneNumber.text.toString(),
