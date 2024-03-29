@@ -93,6 +93,7 @@ class ProfileViewModel(
         goToAuth: () -> Unit
     ) {
         viewModelScope.launch {
+            onDataLoading()
             authRepository.logout().fold(
                 ifLeft = {
                      onDataError(it.message)
