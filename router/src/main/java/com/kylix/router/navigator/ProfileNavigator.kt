@@ -1,6 +1,7 @@
 package com.kylix.router.navigator
 
 import android.app.Activity
+import com.kylix.auth.navigation.AuthNavigation
 import com.kylix.reset_password.navigation.ResetPasswordNavigation
 import com.kylix.change_profile.navigation.ChangeProfileNavigation
 import com.kylix.favorite.navigation.FavoriteNavigation
@@ -9,6 +10,7 @@ import com.kylix.history.navigation.HistoryNavigation
 import com.kylix.profile.navigation.ProfileNavigation
 
 class ProfileNavigator(
+    private val authNavigation: AuthNavigation,
     private val changeProfileNavigation: ChangeProfileNavigation,
     private val resetPasswordNavigation: ResetPasswordNavigation,
     private val historyNavigation: HistoryNavigation,
@@ -33,5 +35,9 @@ class ProfileNavigator(
 
     override fun navigateToHelpCenter(activity: Activity) {
         helpCenterNavigation.navigateItSelf(activity)
+    }
+
+    override fun navigateToAuth(activity: Activity) {
+        authNavigation.navigateItSelf(activity)
     }
 }

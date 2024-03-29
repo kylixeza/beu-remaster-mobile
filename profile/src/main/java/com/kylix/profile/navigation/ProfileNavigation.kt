@@ -22,4 +22,5 @@ abstract class ProfileNavigation {
     abstract fun navigateToHistory(activity: Activity)
     abstract fun navigateToFavorite(activity: Activity)
     abstract fun navigateToHelpCenter(activity: Activity)
+    abstract fun navigateToAuth(activity: Activity)
 }

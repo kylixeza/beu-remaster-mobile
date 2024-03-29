@@ -18,6 +18,8 @@ interface AuthRepository {
         password: String
     ): Either<Error, Success<Unit>>
 
+    suspend fun logout(): Either<Error, Success<Unit>>
+
     suspend fun isPassOnBoard(): Boolean
     suspend fun passOnBoard()
 

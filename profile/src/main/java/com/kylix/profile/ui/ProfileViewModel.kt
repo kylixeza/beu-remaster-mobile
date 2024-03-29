@@ -3,6 +3,7 @@ package com.kylix.profile.ui
 import androidx.lifecycle.viewModelScope
 import com.kylix.common.base.BaseViewModel
 import com.kylix.common.model.User
+import com.kylix.core.repositories.auth.AuthRepository
 import com.kylix.core.repositories.profile.ProfileRepository
 import com.kylix.profile.R
 import com.kylix.profile.model.ProfileSection
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
+    private val authRepository: AuthRepository,
     private val profileRepository: ProfileRepository
 ) : BaseViewModel() {
 
@@ -82,6 +84,22 @@ class ProfileViewModel(
                 ifRight = {
                     onDataSuccess()
                     _user.value = it.data
+                }
+            )
+        }
+    }
+
+    fun logout(
+        goToAuth: () -> Unit
+    ) {
+        viewModelScope.launch {
+            authRepository.logout().fold(
+                ifLeft = {
+                     onDataError(it.message)
+                },
+                ifRight = {
+                    onFinishLoading()
+                    goToAuth()
                 }
             )
         }

@@ -42,7 +42,7 @@ val routerModule = module {
     single<ReviewNavigation> { ReviewNavigator() }
     single<CategoryNavigation> { CategoryNavigator(get()) }
     single<SearchNavigation> { SearchNavigator(get()) }
-    single<ProfileNavigation> { ProfileNavigator(get(), get(), get(), get(), get()) }
+    single<ProfileNavigation> { ProfileNavigator(get(), get(), get(), get(), get(), get()) }
     single<ChangeProfileNavigation> { ChangeProfileNavigator() }
     single<ResetPasswordNavigation> { ResetPasswordNavigator() }
     single<HistoryNavigation> { HistoryNavigator(get()) }

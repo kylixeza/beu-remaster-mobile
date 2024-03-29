@@ -20,4 +20,7 @@ interface AuthApiService {
         @Body body: LoginRequest
     ): NetworkResponse<BaseResponse<TokenResponse>, BaseResponse<Unit>>
 
+    @POST("logout")
+    suspend fun logout(): NetworkResponse<BaseResponse<String>, BaseResponse<Unit>>
+
 }

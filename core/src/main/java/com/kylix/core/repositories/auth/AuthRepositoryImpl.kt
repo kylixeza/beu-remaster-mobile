@@ -56,6 +56,18 @@ class AuthRepositoryImpl(
         }.run()
     }
 
+    override suspend fun logout(): Either<Error, Success<Unit>> {
+        return object : NetworkBoundRequest<String>() {
+            override suspend fun createCall(): NetworkResponse<BaseResponse<String>, BaseResponse<Unit>> {
+                return authApiService.logout()
+            }
+
+            override suspend fun saveCallResult(data: String) {
+                dataStore.deleteToken()
+            }
+        }.run()
+    }
+
     override suspend fun isPassOnBoard(): Boolean {
         return dataStore.getIsPassOnBoard()
     }

@@ -37,6 +37,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         )
 
         rvProfileSection.initLinearVertical(requireContext(), sectionAdapter)
+
+        btnLogout.setOnClickListener {
+            viewModel.logout {
+                profileNavigation.navigateToAuth(requireActivity())
+            }
+        }
     }
 
     override fun FragmentProfileBinding.onDataSuccessLoaded() {
