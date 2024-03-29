@@ -72,9 +72,19 @@ class ChangeProfileActivity : BaseActivity<ActivityChangeProfileBinding>() {
 
     override fun onDataSuccessLoaded() {
         binding.root.successSnackbar("Profil berhasil diubah")
+        clearAllFocus()
     }
 
     private fun pickImageFromGallery() {
         pickImageGalleryLauncher.launch("image/*")
+    }
+
+    private fun clearAllFocus() {
+        binding.apply {
+            edtUsername.clearFocus()
+            edtFullName.clearFocus()
+            edtEmail.clearFocus()
+            edtPhoneNumber.clearFocus()
+        }
     }
 }

@@ -18,7 +18,9 @@ class ChangeProfileValidator(
 
     override fun ActivityChangeProfileBinding.validate() {
 
-        val isEmailValid = tilEmail.baseValidation { Patterns.EMAIL_ADDRESS.matcher(it).matches() && it.isNotEmpty() }
+        val isEmailValid = tilEmail.baseValidation {
+            if (it.isNotEmpty()) Patterns.EMAIL_ADDRESS.matcher(it).matches() else true
+        }
         val isUsernameValid = tilUsername.baseValidation { it.isNotEmpty() }
         val isFullNameValid = tilFullName.baseValidation { it.isNotEmpty() }
         val isPhoneNumberValid = tilPhoneNumber.baseValidation { it.isNotEmpty() }
@@ -45,7 +47,7 @@ class ChangeProfileValidator(
             }
         }
 
-        lifecycleOwner.lifecycleScope.launch(Dispatchers.Main) combine@{
+        lifecycleOwner.lifecycleScope.launch combine@{
             combine(
                 isEmailValid ?: return@combine,
                 isUsernameValid ?: return@combine,
@@ -61,7 +63,7 @@ class ChangeProfileValidator(
 
     private fun TextInputLayout.baseValidation(
         condition: (String) -> Boolean,
-    )= editText?.textChanges()?.skipInitialValue()?.map { it.toString() }?.map {
+    )= editText?.textChanges()?.map { it.toString() }?.map {
         condition(it)
     }
 

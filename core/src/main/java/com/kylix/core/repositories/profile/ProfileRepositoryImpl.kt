@@ -56,7 +56,7 @@ class ProfileRepositoryImpl(
                 val body = UserRequest(
                     username = username,
                     name = name,
-                    email = email,
+                    email = email.ifEmpty { null },
                     phoneNumber = phoneNumber
                 )
                 return profileApiService.updateProfile(body, avatar?.toMultipartBodyPart(context))
