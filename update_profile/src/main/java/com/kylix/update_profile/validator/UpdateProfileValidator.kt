@@ -1,10 +1,10 @@
-package com.kylix.change_profile.validator
+package com.kylix.update_profile.validator
 
 import android.util.Patterns
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputLayout
-import com.kylix.change_profile.databinding.ActivityChangeProfileBinding
+import com.kylix.change_profile.databinding.ActivityUpdateProfileBinding
 import com.kylix.common.util.ConstraintValidator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.combine
@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import reactivecircus.flowbinding.android.widget.textChanges
 
-class ChangeProfileValidator(
+class UpdateProfileValidator(
     private val lifecycleOwner: LifecycleOwner
-): ConstraintValidator<ActivityChangeProfileBinding> {
+): ConstraintValidator<ActivityUpdateProfileBinding> {
 
-    override fun ActivityChangeProfileBinding.validate() {
+    override fun ActivityUpdateProfileBinding.validate() {
 
         val isEmailValid = tilEmail.baseValidation {
             if (it.isNotEmpty()) Patterns.EMAIL_ADDRESS.matcher(it).matches() else true

@@ -51,7 +51,7 @@ dependencies {
     api(project(Modules.review))
     api(project(Modules.search))
     api(project(Modules.profile))
-    api(project(Modules.changeProfile))
+    api(project(Modules.updateProfile))
     api(project(Modules.reset_password))
     api(project(Modules.favorite))
     api(project(Modules.history))

@@ -24,7 +24,7 @@ object Modules {
     const val review = ":review"
     const val comment = ":comment"
     const val search = ":search"
-    const val changeProfile = ":change_profile"
+    const val updateProfile = ":update_profile"
     const val reset_password = ":reset_password"
     const val favorite = ":favorite"
     const val history = ":history"

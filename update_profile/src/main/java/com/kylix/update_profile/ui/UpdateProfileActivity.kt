@@ -1,30 +1,30 @@
-package com.kylix.change_profile.ui
+package com.kylix.update_profile.ui
 
 import androidx.activity.result.contract.ActivityResultContracts
-import com.kylix.change_profile.databinding.ActivityChangeProfileBinding
-import com.kylix.change_profile.validator.ChangeProfileValidator
+import com.kylix.change_profile.databinding.ActivityUpdateProfileBinding
 import com.kylix.common.base.BaseActivity
 import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.draw
 import com.kylix.common.widget.bind
 import com.kylix.common.widget.successSnackbar
+import com.kylix.update_profile.validator.UpdateProfileValidator
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ChangeProfileActivity : BaseActivity<ActivityChangeProfileBinding>() {
+class UpdateProfileActivity : BaseActivity<ActivityUpdateProfileBinding>() {
 
-    override val viewModel by viewModel<ChangeProfileViewModel>()
+    override val viewModel by viewModel<UpdateProfileViewModel>()
 
     private val pickImageGalleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         viewModel.setUri(uri)
     }
 
-    override fun inflateViewBinding(): ActivityChangeProfileBinding {
-        return ActivityChangeProfileBinding.inflate(layoutInflater)
+    override fun inflateViewBinding(): ActivityUpdateProfileBinding {
+        return ActivityUpdateProfileBinding.inflate(layoutInflater)
     }
 
-    override fun ActivityChangeProfileBinding.bind() {
+    override fun ActivityUpdateProfileBinding.bind() {
         changeProfileAppBar.bind(
-            scope = this@ChangeProfileActivity,
+            scope = this@UpdateProfileActivity,
             "Ubah Profil",
             onBack = { finish() }
         )
@@ -42,8 +42,8 @@ class ChangeProfileActivity : BaseActivity<ActivityChangeProfileBinding>() {
         }
     }
 
-    override fun constraintValidator(): ConstraintValidator<ActivityChangeProfileBinding>? {
-        return ChangeProfileValidator(this)
+    override fun constraintValidator(): ConstraintValidator<ActivityUpdateProfileBinding> {
+        return UpdateProfileValidator(this)
     }
 
     override fun observeState() {
@@ -51,7 +51,7 @@ class ChangeProfileActivity : BaseActivity<ActivityChangeProfileBinding>() {
         binding.apply {
             viewModel.user.observe {
                 if (it == null) return@observe
-                ivProfile.draw(this@ChangeProfileActivity, it.avatar) {
+                ivProfile.draw(this@UpdateProfileActivity, it.avatar) {
                     placeholder(com.kylix.common.R.drawable.ilu_default_profile_picture)
                         .circleCrop()
                 }
@@ -63,7 +63,7 @@ class ChangeProfileActivity : BaseActivity<ActivityChangeProfileBinding>() {
 
             viewModel.uri.observe {
                 if (it == null) return@observe
-                ivProfile.draw(this@ChangeProfileActivity, it) {
+                ivProfile.draw(this@UpdateProfileActivity, it) {
                     circleCrop()
                 }
             }

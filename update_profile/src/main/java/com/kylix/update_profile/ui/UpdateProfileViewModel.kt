@@ -1,7 +1,6 @@
-package com.kylix.change_profile.ui
+package com.kylix.update_profile.ui
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.net.Uri
 import androidx.lifecycle.viewModelScope
 import com.kylix.common.base.BaseViewModel
@@ -11,15 +10,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ChangeProfileViewModel(
+class UpdateProfileViewModel(
     private val repository: ProfileRepository
 ): BaseViewModel() {
 
     private val _user = MutableStateFlow<User?>(null)
     val user = _user.asStateFlow()
-
-    private val _bitmap = MutableStateFlow<Bitmap?>(null)
-    val bitmap = _bitmap.asStateFlow()
 
     private val _uri = MutableStateFlow<Uri?>(null)
     val uri = _uri.asStateFlow()
@@ -68,10 +64,6 @@ class ChangeProfileViewModel(
                 }
             )
         }
-    }
-
-    fun setBitmap(bitmap: Bitmap?) {
-        _bitmap.value = bitmap
     }
 
     fun setUri(uri: Uri?) {
