@@ -1,4 +1,4 @@
-package com.kylix.camera
+package com.kylix.camera.ui
 
 import androidx.lifecycle.ViewModel
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="information">Informasi</string>
+    <string name="camera_information_title">Arahkan kamera ke makanan di depanmu</string>
+    <string name="camera_information_description">Kami akan memberikan rekomendasi masakan yang sesuai berdasarkan hasil pengenalan gambar yang dilakukan</string>
+</resources>

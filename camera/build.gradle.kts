@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.kylix.camera"
-    compileSdk = 34
+    compileSdk = App.compileSdk
 
     defaultConfig {
-        minSdk = 21
+        minSdk = App.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -30,6 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -39,4 +43,21 @@ dependencies {
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
     implementation(Libraries.AndroidX.navigationFragment)
     implementation(Libraries.AndroidX.navigationUI)
+
+    implementation(Libraries.CameraX.cameraCore)
+    implementation(Libraries.CameraX.camera2)
+    implementation(Libraries.CameraX.cameraLifecycle)
+    implementation(Libraries.CameraX.cameraView)
+
+    implementation(Libraries.Lottie.lottie)
+    implementation(Libraries.Lottie.dotLottie)
+
+    implementation(Libraries.Koin.koinCore)
+    implementation(Libraries.Koin.koinAndroid)
+
+    implementation(platform(Libraries.Arrow.arrowBOM))
+    implementation(Libraries.Arrow.arrowCore)
+
+    implementation(project(Modules.common))
+    implementation(project(Modules.core))
 }

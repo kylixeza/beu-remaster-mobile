@@ -38,7 +38,6 @@ class ImagesAdapter(
                 marginEnd = marginSize.roundToInt() / marginsInOneRow
             }
         }
-        ivDelete.dispose()
         ivReview.draw(root.context, item) { optionalCenterCrop() }
 
         root.setOnClickListener { onImagePressed(item) }
