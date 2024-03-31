@@ -51,7 +51,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_identifier"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxLines="1"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,11 +100,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/primary_500"
+        android:enabled="false"
         android:fontFamily="@font/poppins_semibold"
         android:padding="8dp"
         android:text="@string/login"
         android:textSize="16sp"
+        android:textAllCaps="false"
         app:cornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

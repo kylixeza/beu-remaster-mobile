@@ -43,6 +43,9 @@ dependencies {
     implementation(Libraries.AndroidX.material)
     implementation(Libraries.AndroidX.fragmentKtx)
 
+    implementation(Libraries.FlowBinding.flowBindingAndroid)
+    implementation(Libraries.FlowBinding.flowBindingMaterial)
+
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)
 

@@ -6,7 +6,9 @@ import com.kylix.auth.R
 import com.kylix.auth.databinding.FragmentLoginBinding
 import com.kylix.auth.navigation.AuthNavigation
 import com.kylix.auth.ui.register.RegisterFragment
+import com.kylix.auth.validator.LoginValidator
 import com.kylix.common.base.BaseFragment
+import com.kylix.common.util.ConstraintValidator
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,6 +36,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
             viewModel.login(identifier, password)
         }
+    }
+
+    override fun constraintValidator(): ConstraintValidator<FragmentLoginBinding>? {
+        return LoginValidator(this)
     }
 
     override fun FragmentLoginBinding.onDataSuccessLoaded() {
