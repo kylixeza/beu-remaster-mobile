@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kylix.change_password"
+    namespace = "com.kylix.reset_password"
     compileSdk = App.compileSdk
 
     defaultConfig {

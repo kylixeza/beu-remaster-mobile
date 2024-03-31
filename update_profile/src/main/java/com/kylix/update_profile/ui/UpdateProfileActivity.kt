@@ -1,7 +1,7 @@
 package com.kylix.update_profile.ui
 
 import androidx.activity.result.contract.ActivityResultContracts
-import com.kylix.change_profile.databinding.ActivityUpdateProfileBinding
+import com.kylix.update_profile.databinding.ActivityUpdateProfileBinding
 import com.kylix.common.base.BaseActivity
 import com.kylix.common.util.ConstraintValidator
 import com.kylix.common.util.draw

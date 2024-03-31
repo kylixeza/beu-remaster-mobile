@@ -4,7 +4,7 @@ import android.util.Patterns
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputLayout
-import com.kylix.change_profile.databinding.ActivityUpdateProfileBinding
+import com.kylix.update_profile.databinding.ActivityUpdateProfileBinding
 import com.kylix.common.util.ConstraintValidator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.combine

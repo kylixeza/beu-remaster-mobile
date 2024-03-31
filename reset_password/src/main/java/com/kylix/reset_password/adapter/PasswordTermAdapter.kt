@@ -2,8 +2,8 @@ package com.kylix.reset_password.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.kylix.change_password.R
-import com.kylix.change_password.databinding.ItemPasswordTemsBinding
+import com.kylix.reset_password.R
+import com.kylix.reset_password.databinding.ItemPasswordTemsBinding
 import com.kylix.reset_password.model.PasswordTerm
 import com.kylix.reset_password.model.PasswordTermType
 import com.kylix.common.base.BaseRecyclerViewAdapter

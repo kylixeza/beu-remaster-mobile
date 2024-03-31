@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kylix.change_profile"
+    namespace = "com.kylix.update_profile"
     compileSdk = App.compileSdk
 
     defaultConfig {

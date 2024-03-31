@@ -2,7 +2,7 @@ package com.kylix.reset_password.validator
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
-import com.kylix.change_password.databinding.ActivityChangePasswordBinding
+import com.kylix.reset_password.databinding.ActivityChangePasswordBinding
 import com.kylix.common.util.ConstraintValidator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

@@ -4,7 +4,7 @@
     <application android:theme="@style/Theme.BeUSkripsi">
         <activity
             android:theme="@style/Theme.BeUSkripsi"
-            android:name="com.kylix.reset_password.ui.ResetPasswordActivity"
+            android:name=".ui.ResetPasswordActivity"
             android:exported="false" />
     </application>
 

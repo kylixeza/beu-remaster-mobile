@@ -2,7 +2,7 @@ package com.kylix.reset_password.ui
 
 import androidx.lifecycle.lifecycleScope
 import com.kylix.reset_password.adapter.PasswordTermAdapter
-import com.kylix.change_password.databinding.ActivityChangePasswordBinding
+import com.kylix.reset_password.databinding.ActivityChangePasswordBinding
 import com.kylix.reset_password.validator.ResetPasswordValidator
 import com.kylix.common.base.BaseActivity
 import com.kylix.common.util.ConstraintValidator
