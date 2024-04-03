@@ -49,5 +49,4 @@ dependencies {
     implementation(Libraries.Koin.koinAndroid)
 
     api(project(Modules.core))
-    api(project(Modules.common))
 }

@@ -43,7 +43,6 @@ dependencies {
     implementation(Libraries.AndroidX.navigationFragment)
     implementation(Libraries.AndroidX.navigationUI)
 
-    api(project(Modules.common))
     implementation(project(Modules.home))
     implementation(project(Modules.camera))
     implementation(project(Modules.profile))

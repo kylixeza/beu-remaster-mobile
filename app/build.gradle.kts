@@ -43,5 +43,4 @@ dependencies {
     implementation(Libraries.Koin.koinAndroid)
 
     api(project(Modules.router))
-    api(project(Modules.common))
 }

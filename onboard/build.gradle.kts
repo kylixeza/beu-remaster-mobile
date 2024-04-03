@@ -56,5 +56,4 @@ dependencies {
     implementation(Libraries.Lottie.dotLottie)
 
     api(project(Modules.core))
-    api(project(Modules.common))
 }

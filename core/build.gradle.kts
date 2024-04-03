@@ -65,5 +65,5 @@ dependencies {
     implementation(platform(Libraries.Arrow.arrowBOM))
     implementation(Libraries.Arrow.arrowCore)
 
-    implementation(project(Modules.common))
+    api(project(Modules.common))
 }

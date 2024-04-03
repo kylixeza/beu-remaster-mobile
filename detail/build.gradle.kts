@@ -58,6 +58,4 @@ dependencies {
     implementation(Libraries.Arrow.arrowCore)
 
     implementation(project(Modules.comment))
-    implementation(project(Modules.common))
-    implementation(project(Modules.core))
 }
