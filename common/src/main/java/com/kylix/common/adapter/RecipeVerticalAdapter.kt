@@ -32,7 +32,7 @@ class RecipeVerticalAdapter(
 
         if (isFavoriteVisible) ivPressedFavorite.show() else ivPressedFavorite.hide()
         tvFoodName.text = item.name
-        ivFood.draw(root.context, item.image)
+        ivFood.draw(root.context, item.image) { centerCrop() }
         ivPressedFavorite.setImageResource(
             if (item.isFavorite) R.drawable.ic_favorite else R.drawable.ic_unfavorite_black
         )
