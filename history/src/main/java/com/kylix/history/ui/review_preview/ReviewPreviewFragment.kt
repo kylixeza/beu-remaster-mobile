@@ -7,11 +7,11 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.kylix.common.adapter.ImagesAdapter
 import com.kylix.common.base.BaseBottomSheetDialogFragment
 import com.kylix.common.util.draw
 import com.kylix.common.widget.bind
 import com.kylix.common.widget.buildFullSizeImageDialog
-import com.kylix.history.adapter.ImagesAdapter
 import com.kylix.history.databinding.FragmentReviewPreviewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,14 +21,14 @@ class ReviewPreviewFragment : BaseBottomSheetDialogFragment<FragmentReviewPrevie
 
     override val viewModel by viewModel<ReviewPreviewViewModel>()
 
-    private val imagesAdapter by lazy { ImagesAdapter(
+    private val imagesAdapter by lazy { ImagesAdapter<String>(
         outsidePadding = binding?.run {
             val rootHorizontalPadding = root.paddingStart + root.paddingEnd
             val innerCardPadding = includeReviewPreview.clReview.paddingStart + includeReviewPreview.clReview.paddingEnd
             rootHorizontalPadding + innerCardPadding
-        } ?: 0,
-        onImagePressed = { openFullSizeImage(it) }
-    ) }
+        } ?: 0
+    ) { openFullSizeImage(it) }
+    }
 
     override fun inflateViewBinding(container: ViewGroup?): FragmentReviewPreviewBinding {
         return FragmentReviewPreviewBinding.inflate(layoutInflater, container, false)

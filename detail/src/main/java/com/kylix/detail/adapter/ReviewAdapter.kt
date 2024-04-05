@@ -6,6 +6,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.kylix.common.adapter.ImagesAdapter
 import com.kylix.common.base.BaseRecyclerViewAdapter
 import com.kylix.common.model.Review
 import com.kylix.common.util.draw
@@ -36,10 +37,9 @@ class ReviewAdapter(
         }
         tvReview.text = item.comment
 
-        val reviewImageAdapter = ReviewImageAdapter(
-            outsidePadding = outsidePadding,
-            onImagePressed = { onImagePressed(it) }
-        )
+        val reviewImageAdapter = ImagesAdapter<String>(
+            outsidePadding = outsidePadding
+        ) { onImagePressed(it) }
 
         val flexboxLayoutManager = FlexboxLayoutManager(root.context).apply {
             flexWrap = FlexWrap.WRAP

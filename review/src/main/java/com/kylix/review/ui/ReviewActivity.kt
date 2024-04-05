@@ -7,6 +7,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.kylix.common.adapter.ImagesAdapter
 import com.kylix.common.base.BaseActivity
 import com.kylix.common.util.ScreenOrientation
 import com.kylix.common.util.dispose
@@ -15,7 +16,6 @@ import com.kylix.common.widget.bind
 import com.kylix.common.widget.buildErrorDialog
 import com.kylix.common.widget.buildFullSizeImageDialog
 import com.kylix.common.widget.buildSuccessDialog
-import com.kylix.review.adapter.ImagesAdapter
 import com.kylix.review.databinding.ActivityReviewBinding
 import com.kylix.review.util.CameraManager
 import kotlinx.coroutines.Dispatchers
@@ -29,11 +29,11 @@ class ReviewActivity : BaseActivity<ActivityReviewBinding>() {
 
     override val viewModel by viewModel<ReviewViewModel>()
 
-    private val imagesAdapter by lazy { ImagesAdapter(
+    private val imagesAdapter by lazy { ImagesAdapter<Bitmap>(
         outsidePadding = binding.llReview.paddingStart + binding.llReview.paddingEnd,
-        onImageDeleted = { viewModel.removePhoto(it) },
-        onImagePressed = { openFullSizeImage(it) }
-    ) }
+        onImageDeleted = { viewModel.removePhoto(it) }
+    ) { openFullSizeImage(it) }
+    }
 
     private lateinit var cameraManager: CameraManager
 
