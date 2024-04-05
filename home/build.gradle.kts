@@ -44,6 +44,7 @@ dependencies {
     implementation(Libraries.AndroidX.lifecycleViewModelKtx)
     implementation(Libraries.AndroidX.navigationFragment)
     implementation(Libraries.AndroidX.navigationUI)
+    implementation(Libraries.Glide.glide)
 
     implementation(Libraries.Koin.koinCore)
     implementation(Libraries.Koin.koinAndroid)

@@ -17,7 +17,9 @@ class RecipeAdapter(
 
     override fun ItemRecipeHorizontalBinding.bind(item: RecipeList) {
         tvFoodName.text = item.name
-        ivFood.draw(root.context, item.image)
+        ivFood.draw(root.context, item.image) {
+            centerCrop()
+        }
 
         when(item.difficulty) {
             "Mudah" -> {
