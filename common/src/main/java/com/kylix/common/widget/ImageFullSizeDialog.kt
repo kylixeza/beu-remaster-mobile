@@ -10,11 +10,11 @@ import com.kylix.common.databinding.ImageFullSizeDialogBinding
 import com.kylix.common.util.draw
 import kotlin.math.roundToInt
 
-private fun Context.buildBaseFullSizeImageDialog(
-    drawImage: ImageFullSizeDialogBinding.() -> Unit
+fun Context.buildFullSizeImageDialog(
+    image: Any?
 ) = Dialog(this).apply {
     val view = ImageFullSizeDialogBinding.inflate(layoutInflater)
-    drawImage.invoke(view)
+    view.root.draw(this@buildFullSizeImageDialog, image)
     requestWindowFeature(Window.FEATURE_NO_TITLE)
     setContentView(view.root)
 
@@ -25,13 +25,4 @@ private fun Context.buildBaseFullSizeImageDialog(
 
     window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     window?.setLayout((width * ratio).roundToInt(), (height * ratio).roundToInt())
-}
-
-fun Context.buildFullSizeImageDialog(image: Bitmap) = buildBaseFullSizeImageDialog {
-    root.draw(this@buildFullSizeImageDialog, image)
-}
-
-
-fun Context.buildFullSizeImageDialog(image: String) = buildBaseFullSizeImageDialog {
-    root.draw(this@buildFullSizeImageDialog, image)
 }

@@ -30,7 +30,7 @@ fun ImageView.draw(drawable: Int) = setImageResource(drawable)
 
 fun ImageView.draw(
     context: Context,
-    data: Any,
+    data: Any?,
     requestBuilder: RequestBuilder<Drawable>.() -> RequestBuilder<Drawable> = { this }
 ) {
     Glide.with(context)

@@ -48,6 +48,7 @@ dependencies {
     implementation(Libraries.CameraX.camera2)
     implementation(Libraries.CameraX.cameraLifecycle)
     implementation(Libraries.CameraX.cameraView)
+    implementation(Libraries.CameraX.cameraExtensions)
 
     implementation(Libraries.Lottie.lottie)
     implementation(Libraries.Lottie.dotLottie)

@@ -87,10 +87,11 @@ object Libraries {
     }
 
     object CameraX {
-        const val cameraCore = "androidx.camera:camera-core:1.3.1"
-        const val camera2 = "androidx.camera:camera-camera2:1.3.1"
-        const val cameraLifecycle = "androidx.camera:camera-lifecycle:1.3.1"
-        const val cameraView = "androidx.camera:camera-view:1.3.1"
+        const val cameraCore = "androidx.camera:camera-core:1.4.0-alpha04"
+        const val camera2 = "androidx.camera:camera-camera2:1.4.0-alpha04"
+        const val cameraLifecycle = "androidx.camera:camera-lifecycle:1.4.0-alpha04"
+        const val cameraView = "androidx.camera:camera-view:1.4.0-alpha04"
+        const val cameraExtensions = "androidx.camera:camera-extensions:1.4.0-alpha04"
     }
 
     object TFLite {
