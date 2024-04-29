@@ -9,6 +9,7 @@ import com.kylix.core.data.api.comment.CommentApiService
 import com.kylix.core.data.api.favorite.FavoriteApiService
 import com.kylix.core.data.api.help_center.HelpCenterApiService
 import com.kylix.core.data.api.history.HistoryApiService
+import com.kylix.core.data.api.prediction.PredictionApiService
 import com.kylix.core.data.api.profile.ProfileApiService
 import com.kylix.core.data.api.recipe.RecipeApiService
 import com.kylix.core.data.api.review.ReviewApiService
@@ -26,6 +27,8 @@ import com.kylix.core.repositories.help_center.HelpCenterRepository
 import com.kylix.core.repositories.help_center.HelpCenterRepositoryImpl
 import com.kylix.core.repositories.history.HistoryRepository
 import com.kylix.core.repositories.history.HistoryRepositoryImpl
+import com.kylix.core.repositories.prediction.PredictionRepository
+import com.kylix.core.repositories.prediction.PredictionRepositoryImpl
 import com.kylix.core.repositories.profile.ProfileRepository
 import com.kylix.core.repositories.profile.ProfileRepositoryImpl
 import com.kylix.core.repositories.recipe.RecipeRepository
@@ -101,6 +104,7 @@ val networkModule = module {
     single { get<Retrofit>().create(CommentApiService::class.java) }
     single { get<Retrofit>().create(ProfileApiService::class.java) }
     single { get<Retrofit>().create(HelpCenterApiService::class.java) }
+    single { get<Retrofit>().create(PredictionApiService::class.java) }
 }
 
 val repositoryModule = module {
@@ -113,4 +117,5 @@ val repositoryModule = module {
     single<CommentRepository> { CommentRepositoryImpl(get()) }
     single<ProfileRepository> { ProfileRepositoryImpl(get()) }
     single<HelpCenterRepository> { HelpCenterRepositoryImpl(get()) }
+    single<PredictionRepository> { PredictionRepositoryImpl(get()) }
 }

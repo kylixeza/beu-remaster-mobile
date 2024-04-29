@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="24dp"
+    tools:context=".ui.result.PredictionResultFragment">
+
+    <ImageView
+        android:id="@+id/iv_prediction_result_pointer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        android:src="@drawable/ic_bottom_sheet_pointer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_search_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/search_result"
+        android:textColor="@color/neutral_900"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_prediction_result_pointer" />
+
+    <TextView
+        android:id="@+id/tv_prediction_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/primary_700"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_search_result"
+        app:layout_constraintStart_toEndOf="@id/tv_search_result"
+        app:layout_constraintTop_toTopOf="@id/tv_search_result"
+        tools:text="Sayur" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_send_prediction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:fontFamily="@font/poppins"
+        android:text="@string/send_prediction_result"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/primary_700"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_prediction_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingVertical="8dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_send_prediction"
+        app:layout_constraintTop_toBottomOf="@id/tv_search_result" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

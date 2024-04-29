@@ -1,3 +1,5 @@
+import com.android.builder.internal.aapt.AaptOptions
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -6,6 +8,10 @@ plugins {
 android {
     namespace = "com.kylix.camera"
     compileSdk = App.compileSdk
+
+    aaptOptions {
+        noCompress("tflite", "lite")
+    }
 
     defaultConfig {
         minSdk = App.minSdk
@@ -33,6 +39,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        mlModelBinding = true
     }
 }
 
@@ -49,6 +56,12 @@ dependencies {
     implementation(Libraries.CameraX.cameraLifecycle)
     implementation(Libraries.CameraX.cameraView)
     implementation(Libraries.CameraX.cameraExtensions)
+
+    implementation(Libraries.TFLite.tfLite)
+    implementation(Libraries.TFLite.tfLiteSupport)
+    implementation(Libraries.TFLite.tfLiteGPU)
+    implementation(Libraries.TFLite.tfLiteGPUApi)
+    implementation(Libraries.TFLite.tfLiteMetadata)
 
     implementation(Libraries.Lottie.lottie)
     implementation(Libraries.Lottie.dotLottie)

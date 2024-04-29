@@ -25,10 +25,13 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.kylix.camera.databinding.FragmentCameraBinding
+import com.kylix.camera.tflite.TFLiteHelper
+import com.kylix.camera.ui.result.PredictionResultFragment
 import com.kylix.camera.widget.buildCameraInformationDialog
 import com.kylix.common.base.BaseFragment
 import com.kylix.common.widget.buildFullSizeImageDialog
 import com.kylix.common.widget.errorSnackbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 import java.io.FileDescriptor
 import java.io.IOException
@@ -49,6 +52,7 @@ class CameraFragment : BaseFragment<FragmentCameraBinding>(), CameraXConfig.Prov
 
     private val cameraExecutor: Executor = Executors.newSingleThreadExecutor()
 
+    private val tfLiteHelper by lazy { TFLiteHelper(requireContext()) }
     private lateinit var imageCapture: ImageCapture
 
     override fun inflateViewBinding(container: ViewGroup?): FragmentCameraBinding {
@@ -111,7 +115,12 @@ class CameraFragment : BaseFragment<FragmentCameraBinding>(), CameraXConfig.Prov
                     val savedUri = Uri.fromFile(photoFile)
                     val rotation = computeRelativeRotation()
                     val bitmap = savedUri.toBitmap()?.rotateBitmap(rotation.toFloat())
-                    requireContext().buildFullSizeImageDialog(bitmap).show()
+                    val result = tfLiteHelper.classifyImage(bitmap)
+                    PredictionResultFragment(
+                        actual = result.first,
+                        probability = result.second,
+                        imageBitmap = bitmap
+                    ).show(childFragmentManager, PredictionResultFragment::class.java.simpleName)
                 }
             }
 

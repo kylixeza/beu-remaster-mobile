@@ -50,6 +50,7 @@ dependencies {
     api(project(Modules.detail))
     api(project(Modules.review))
     api(project(Modules.search))
+    api(project(Modules.camera))
     api(project(Modules.profile))
     api(project(Modules.updateProfile))
     api(project(Modules.reset_password))

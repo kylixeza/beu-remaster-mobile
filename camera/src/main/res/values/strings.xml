@@ -3,4 +3,10 @@
     <string name="information">Informasi</string>
     <string name="camera_information_title">Arahkan kamera ke makanan di depanmu</string>
     <string name="camera_information_description">Kami akan memberikan rekomendasi masakan yang sesuai berdasarkan hasil pengenalan gambar yang dilakukan</string>
+    <string name="search_result">Hasil Pencarian: </string>
+    <string name="send_prediction_result">Kirim Hasil Prediksi</string>
+    <string name="actual">Actual</string>
+    <string name="predicted">Predicted</string>
+    <string name="expected">Expected</string>
+    <string name="prediction">Prediction</string>
 </resources>

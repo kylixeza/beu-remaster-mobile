@@ -99,6 +99,7 @@ object Libraries {
         const val tfLiteMetadata = "org.tensorflow:tensorflow-lite-metadata:0.1.0"
         const val tfLite = "org.tensorflow:tensorflow-lite:2.14.0"
         const val tfLiteGPU = "org.tensorflow:tensorflow-lite-gpu:2.14.0"
+        const val tfLiteGPUApi = "org.tensorflow:tensorflow-lite-gpu-api:2.10.0"
     }
 
     object Navigation {

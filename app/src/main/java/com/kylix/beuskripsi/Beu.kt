@@ -2,6 +2,7 @@ package com.kylix.beuskripsi
 
 import android.app.Application
 import com.kylix.auth.di.authModule
+import com.kylix.camera.di.cameraModule
 import com.kylix.category.di.categoryModule
 import com.kylix.reset_password.di.resetPasswordModule
 import com.kylix.update_profile.di.updateProfileModule
@@ -46,6 +47,7 @@ class Beu: Application() {
                 reviewModule,
                 categoryModule,
                 searchModule,
+                cameraModule,
                 profileModule,
                 updateProfileModule,
                 resetPasswordModule,
