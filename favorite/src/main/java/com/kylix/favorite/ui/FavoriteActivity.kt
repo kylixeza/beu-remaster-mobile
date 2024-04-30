@@ -37,7 +37,7 @@ class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>() {
     override fun ActivityFavoriteBinding.bind() {
         viewModel.getFavorites()
         favoriteAppBar.bind(
-            title = "Favorite",
+            title = "Favorit",
             onLeftIconPressed = { finish() }
         )
 
