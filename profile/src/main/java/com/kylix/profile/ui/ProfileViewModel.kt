@@ -27,7 +27,7 @@ class ProfileViewModel(
     init {
         _profileSection.value = listOf(
             ProfileSection(
-                sectionName = "Account",
+                sectionName = "Akun",
                 settings = listOf(
                     Setting(
                         name = "Ubah Profil",
