@@ -24,6 +24,7 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
+import com.kylix.camera.R
 import com.kylix.camera.databinding.FragmentCameraBinding
 import com.kylix.camera.tflite.TFLiteHelper
 import com.kylix.camera.ui.result.PredictionResultFragment
@@ -131,7 +132,7 @@ class CameraFragment : BaseFragment<FragmentCameraBinding>(), CameraXConfig.Prov
     }
 
     override fun systemBarColor(): Int {
-        return android.R.color.transparent
+        return com.kylix.common.R.color.primary_700
     }
 
     override fun getCameraXConfig(): CameraXConfig {
