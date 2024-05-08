@@ -3,9 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:theme="@style/Theme.BeUSkripsi">
+        android:theme="@style/Theme.BeUSkripsi"
+        android:allowBackup="false"
+        android:extractNativeLibs="true"
+        android:supportsRtl="true">
         <activity
             android:name=".ui.SplashActivity"
+            android:theme="@style/Theme.BeUSkripsi.Splash"
             android:exported="true" />
     </application>
 

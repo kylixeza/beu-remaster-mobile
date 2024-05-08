@@ -29,4 +29,9 @@
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/card_white_rounded</item>
     </style>
+
+    <style name="Theme.BeUSkripsi.Splash" >
+        <item name="android:windowIsTranslucent">true</item>
+
+    </style>
 </resources>

@@ -20,6 +20,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     override fun ActivitySplashBinding.bind() {
+
         lifecycleScope.launch {
             viewModel.destination.collect {
                 when(it) {
