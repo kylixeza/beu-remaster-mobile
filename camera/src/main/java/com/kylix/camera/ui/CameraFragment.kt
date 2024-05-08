@@ -81,8 +81,7 @@ class CameraFragment : BaseFragment<FragmentCameraBinding>(), CameraXConfig.Prov
 
         cameraProviderFuture.addListener({
             imageCapture = ImageCapture.Builder().apply {
-                this.setFlashMode(ImageCapture.FLASH_MODE_AUTO)
-                    .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
+                this.setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
             }.build()
 
             val imagePreview = Preview.Builder().apply {

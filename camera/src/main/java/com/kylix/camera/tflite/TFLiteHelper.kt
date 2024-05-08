@@ -25,7 +25,7 @@ class TFLiteHelper(
     private lateinit var tflite: Interpreter
     
     companion object {
-        private const val MODEL_PATH = "beu_mini_v2.tflite"
+        private const val MODEL_PATH = "beu.tflite"
         private const val LABELS_PATH = "beu_labels.txt"
     }
     

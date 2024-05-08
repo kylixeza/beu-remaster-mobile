@@ -13,6 +13,7 @@ import com.kylix.common.util.draw
 import com.kylix.common.widget.bind
 import com.kylix.common.widget.buildFullSizeImageDialog
 import com.kylix.history.databinding.FragmentReviewPreviewBinding
+import com.kylix.history.util.toGMT8Format
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,7 +59,7 @@ class ReviewPreviewFragment : BaseBottomSheetDialogFragment<FragmentReviewPrevie
                         .circleCrop()
                 }
                 tvUsername.text = it.username
-                tvTimeStamp.text = it.timeStamp
+                tvTimeStamp.text = it.timeStamp.toGMT8Format()
 
                 includeReviewPreview.apply {
                     starsRating.bind(
