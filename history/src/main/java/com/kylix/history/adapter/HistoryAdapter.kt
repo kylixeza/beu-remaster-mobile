@@ -2,10 +2,12 @@ package com.kylix.history.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.kylix.common.R
 import com.kylix.common.base.BaseRecyclerViewAdapter
 import com.kylix.common.model.History
 import com.kylix.common.util.dispose
+import com.kylix.common.util.draw
 import com.kylix.common.widget.bind
 import com.kylix.common.widget.reset
 import com.kylix.history.databinding.ItemHistoryBinding
@@ -23,6 +25,9 @@ class HistoryAdapter(
         tvFoodName.text = item.recipeName
         tvTimestamp.text = item.timeStamp
         tvTimeSpent.text = item.spendTime
+        ivFood.draw(root.context, item.recipeImage) {
+           transform(RoundedCorners(16))
+        }
 
         cvIsReviewed.setCardBackgroundColor(
             if (item.isReviewed) itemView.context.getColor(R.color.success_50)

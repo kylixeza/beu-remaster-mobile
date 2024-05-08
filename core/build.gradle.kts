@@ -17,10 +17,10 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://beu-api-test.up.railway.app\"")
+            buildConfigField("String", "BASE_URL", "\"https://beu-api.up.railway.app\"")
         }
         release {
-            buildConfigField("String", "BASE_URL", "\"\"")
+            buildConfigField("String", "BASE_URL", "\"https://beu-api.up.railway.app\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

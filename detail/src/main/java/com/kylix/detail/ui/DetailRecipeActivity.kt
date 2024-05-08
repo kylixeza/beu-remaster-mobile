@@ -88,6 +88,7 @@ class DetailRecipeActivity : BaseActivity<ActivityDetailRecipeBinding>() {
                         onLeftIconPressed = { finish() },
                         onRightIconPressed = { viewModel.onFavoriteIconPressed() }
                     )
+                    tvVideoSrc.text = it.videoSrc
                     bottomBarDetail.tvCommentCount.text = getString(R.string.comments_count, it.commentsCount)
                     initPlayer()
                 }

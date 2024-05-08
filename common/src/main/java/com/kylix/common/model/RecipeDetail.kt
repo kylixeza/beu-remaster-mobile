@@ -5,6 +5,7 @@ data class RecipeDetail(
     val isFavorite: Boolean,
     val name: String,
     val video: String,
+    val videoSrc: String,
     val ingredients: List<String>,
     val tools: List<String>,
     val steps: List<String>,
