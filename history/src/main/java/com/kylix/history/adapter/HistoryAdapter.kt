@@ -11,6 +11,7 @@ import com.kylix.common.util.draw
 import com.kylix.common.widget.bind
 import com.kylix.common.widget.reset
 import com.kylix.history.databinding.ItemHistoryBinding
+import com.kylix.history.util.toGMT8Format
 
 class HistoryAdapter(
     private val onReviewClicked: (Boolean, String) -> Unit = { _, _ -> },
@@ -23,7 +24,7 @@ class HistoryAdapter(
         cvReview.starsRating.reset(root.context)
 
         tvFoodName.text = item.recipeName
-        tvTimestamp.text = item.timeStamp
+        tvTimestamp.text = item.timeStamp.toGMT8Format()
         tvTimeSpent.text = item.spendTime
         ivFood.draw(root.context, item.recipeImage) {
            transform(RoundedCorners(16))
