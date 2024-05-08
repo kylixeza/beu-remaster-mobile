@@ -28,10 +28,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.kylix.beuskripsi" />
+                  <option name="mobileSdkAppId" value="1:985995926589:android:dc26103260608c41075e54" />
+                  <option name="projectId" value="beu-skripsi" />
+                  <option name="projectNumber" value="985995926589" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

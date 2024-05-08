@@ -152,4 +152,9 @@ object Libraries {
         const val flexbox = "com.google.android.flexbox:flexbox:3.0.0"
     }
 
+    object Firebase {
+        const val firebaseBOM = "com.google.firebase:firebase-bom:33.0.0"
+        const val firebaseAnalytics = "com.google.firebase:firebase-analytics"
+    }
+
 }
