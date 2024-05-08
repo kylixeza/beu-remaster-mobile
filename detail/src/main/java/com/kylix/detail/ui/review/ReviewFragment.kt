@@ -3,8 +3,10 @@ package com.kylix.detail.ui.review
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import com.kylix.common.base.BaseFragment
+import com.kylix.common.util.dispose
 import com.kylix.common.util.initLinearVertical
 import com.kylix.common.util.orZero
+import com.kylix.common.util.show
 import com.kylix.common.widget.buildFullSizeImageDialog
 import com.kylix.detail.adapter.ReviewAdapter
 import com.kylix.detail.ui.DetailRecipeViewModel
@@ -33,6 +35,9 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
             viewModel.recipe.collect {
                 it?.apply {
+                    if (it.reviews.isEmpty()) tvEmptyReview.show()
+                    else tvEmptyReview.dispose()
+
                     reviewAdapter.submitList(reviews)
                 }
             }

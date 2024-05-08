@@ -7,8 +7,11 @@ import com.kylix.common.databinding.ItemRecipeHorizontalBinding
 import com.kylix.common.model.RecipeList
 import com.kylix.common.util.draw
 import com.kylix.common.R
+import com.kylix.common.util.dispose
+import com.kylix.common.util.show
 
 class RecipeAdapter(
+    private val showExclusiveTag: Boolean = false,
     private val onRecipeSelected: (String) -> Unit = {}
 ): BaseRecyclerViewAdapter<ItemRecipeHorizontalBinding, RecipeList>() {
     override fun inflateViewBinding(parent: ViewGroup): ItemRecipeHorizontalBinding {
@@ -18,6 +21,8 @@ class RecipeAdapter(
     override fun ItemRecipeHorizontalBinding.bind(item: RecipeList) {
         tvFoodName.text = item.name
         ivFood.draw(root.context, item.image) { centerCrop() }
+
+        if (showExclusiveTag) ivExclusiveTag.show() else ivExclusiveTag.dispose()
 
         when(item.difficulty) {
             "Mudah" -> {

@@ -18,4 +18,5 @@
     <string name="finish_already">Dah selesai masaknya?</string>
     <string name="cook_for">Kamu memasak selama %s</string>
     <string name="lets_give_review">Beri ulasan yuk!</string>
+    <string name="empty_review">"Masih belum terdapat ulasan dari pengguna lain "</string>
 </resources>

@@ -60,8 +60,9 @@
         android:textSize="14sp"
         android:visibility="invisible"
         android:gravity="center"
+        android:fontFamily="@font/poppins"
+        android:text="@string/no_comments_yet"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Masih belum terdapat komentar ditambahkan"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

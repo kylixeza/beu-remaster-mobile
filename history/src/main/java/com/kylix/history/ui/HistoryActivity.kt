@@ -1,7 +1,9 @@
 package com.kylix.history.ui
 
 import com.kylix.common.base.BaseActivity
+import com.kylix.common.util.dispose
 import com.kylix.common.util.initLinearVertical
+import com.kylix.common.util.show
 import com.kylix.common.widget.bind
 import com.kylix.history.adapter.HistoryAdapter
 import com.kylix.history.databinding.ActivityHistoryBinding
@@ -41,6 +43,9 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>() {
         super.observeState()
 
         viewModel.histories.observe {
+            if (it.isEmpty()) binding.tvEmptyFavorite.show()
+            else binding.tvEmptyFavorite.dispose()
+
             historyAdapter.submitList(it)
         }
     }

@@ -16,13 +16,13 @@ class HomeAdapter(
         return ItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     }
 
-    override fun ItemHomeBinding.bind(item: HomeRecipe) {
+    override fun ItemHomeBinding.bindWithPosition(item: HomeRecipe, position: Int) {
         tvTitle.text = item.title
         tvSubtitle.text = item.subtitle
 
         if (item.subtitle == null) tvSubtitle.dispose()
 
-        val recipeAdapter = RecipeAdapter(onRecipeSelected)
+        val recipeAdapter = RecipeAdapter(position == itemList.size - 1, onRecipeSelected)
 
         rvRecipes.initLinearHorizontal(root.context, recipeAdapter)
         recipeAdapter.submitList(item.recipes)
