@@ -1,6 +1,7 @@
 package com.kylix.router.di
 
 import com.kylix.auth.navigation.AuthNavigation
+import com.kylix.camera.navigation.CameraNavigation
 import com.kylix.category.navigation.CategoryNavigation
 import com.kylix.reset_password.navigation.ResetPasswordNavigation
 import com.kylix.update_profile.navigation.UpdateProfileNavigation
@@ -14,6 +15,7 @@ import com.kylix.onboard.navigation.OnBoardNavigation
 import com.kylix.profile.navigation.ProfileNavigation
 import com.kylix.review.navigation.ReviewNavigation
 import com.kylix.router.navigator.AuthNavigator
+import com.kylix.router.navigator.CameraNavigator
 import com.kylix.router.navigator.CategoryNavigator
 import com.kylix.router.navigator.ResetPasswordNavigator
 import com.kylix.router.navigator.UpdateProfileNavigator
@@ -48,4 +50,5 @@ val routerModule = module {
     single<HistoryNavigation> { HistoryNavigator(get()) }
     single<FavoriteNavigation> { FavoriteNavigator(get()) }
     single<HelpCenterNavigation> { HelpCenterNavigator() }
+    single<CameraNavigation> { CameraNavigator(get()) }
 }
