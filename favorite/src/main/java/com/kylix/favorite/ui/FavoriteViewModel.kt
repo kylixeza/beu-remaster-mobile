@@ -31,24 +31,14 @@ class FavoriteViewModel(
     }
 
     fun onFavoritePressed(recipeId: String) {
-        val selectedItem = _favorites.value.find { it.recipeId == recipeId }
-        _favorites.value = _favorites.value.apply {
-            selectedItem?.let {
-                remove(it)
-            }
-        }
+        onDataLoading()
         viewModelScope.launch {
             favoriteRepository.deleteFavorite(recipeId).fold(
                 ifLeft = {
                     onDataError(it.message)
-                    _favorites.value = _favorites.value.apply {
-                        selectedItem?.let {
-                            add(it)
-                        }
-                    }
                 },
                 ifRight = {
-
+                    getFavorites()
                 }
             )
         }
