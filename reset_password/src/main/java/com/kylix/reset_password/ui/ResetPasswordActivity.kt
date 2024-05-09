@@ -28,6 +28,7 @@ class ResetPasswordActivity : BaseActivity<ActivityChangePasswordBinding>() {
         changePasswordAppBar.bind(
             scope = this@ResetPasswordActivity,
             title = "Ubah Password",
+            onBack = { finish() }
         )
         btnConfirm.isEnabled = true
 
