@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "985995926589",
+    "project_id": "beu-skripsi",
+    "storage_bucket": "beu-skripsi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985995926589:android:dc26103260608c41075e54",
+        "android_client_info": {
+          "package_name": "com.kylix.beuskripsi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY80PbiIFIbl9_zXP_mg1rWjBdRS7zn3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985995926589:android:ac25741d4f179c78075e54",
+        "android_client_info": {
+          "package_name": "com.kylix.beuskripsi.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY80PbiIFIbl9_zXP_mg1rWjBdRS7zn3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

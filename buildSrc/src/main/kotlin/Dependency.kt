@@ -1,4 +1,5 @@
 object App {
+    const val name = "Beu"
     const val compileSdk = 34
     const val minSdk = 24
     const val targetSdk = 33

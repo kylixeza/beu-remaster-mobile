@@ -34,6 +34,24 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    val appName = App.name
+    buildFeatures {
+        flavorDimensions += "version"
+    }
+
+    productFlavors {
+        create("dev") {
+            dimension = "version"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            resValue("string", "app_name", "${appName}-dev")
+        }
+        create("prod") {
+            dimension = "version"
+            resValue("string", "app_name", appName)
+        }
+    }
 }
 
 dependencies {
