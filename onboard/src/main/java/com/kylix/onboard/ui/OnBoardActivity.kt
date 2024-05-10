@@ -50,6 +50,7 @@ class OnBoardActivity : BaseActivity<ActivityOnBoardBinding>() {
         }
 
         btnSkip.setOnClickListener {
+            viewModel.passOnBoard()
             navigation.navigateToAuth(this@OnBoardActivity)
         }
 
